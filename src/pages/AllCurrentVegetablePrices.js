@@ -18,6 +18,7 @@ import pattani from "../images/pattani.png";
 import drum_stick from "../images/drumstick.png";
 import brinjal from "../images/brinjal_vari.png";
 import { useEffect, useState } from "react";
+import { Box, Container } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
    [`&.${tableCellClasses.head}`]: {
@@ -75,48 +76,60 @@ export default function AllCurrentVegetablePrices() {
    };
 
    return (
-      <TableContainer component={Paper}>
-         <Table aria-label="customized table">
-            <TableHead>
-               <TableRow>
-                  <StyledTableCell>Image</StyledTableCell>
-                  <StyledTableCell className="text-center">
-                     Vegetable name
-                  </StyledTableCell>
-                  <StyledTableCell align="right">Price</StyledTableCell>
-               </TableRow>
-            </TableHead>
-            <TableBody>
-               {priceList.map((row, index) => (
-                  <StyledTableRow key={row.name}>
-                     <StyledTableCell component="th" scope="row">
-                        <img
-                           style={{ width: "50px", height: "50px" }}
-                           src={row?.image}
-                           alt=""
-                        />
-                     </StyledTableCell>
-                     <StyledTableCell
-                        className="w-100 text-center"
-                        component="th"
-                        scope="row"
-                     >
-                        {row.name}
-                     </StyledTableCell>
-                     <StyledTableCell className="w-100" align="right">
-                        <input
-                           type="number"
-                           className="w-100 text-end border-0 bg-transparent"
-                           value={priceList[index].price} // Corrected line
-                           onChange={(e) =>
-                              handlePriceChange(index, parseInt(e.target.value))
-                           }
-                        />
-                     </StyledTableCell>
-                  </StyledTableRow>
-               ))}
-            </TableBody>
-         </Table>
-      </TableContainer>
+      <Box>
+         <Container className="my-3">
+            <TableContainer component={Paper}>
+               <Table aria-label="customized table">
+                  <TableHead>
+                     <TableRow>
+                        <StyledTableCell align="right">Id</StyledTableCell>
+                        <StyledTableCell>Image</StyledTableCell>
+                        <StyledTableCell className="text-center">
+                           Vegetable name
+                        </StyledTableCell>
+                        <StyledTableCell align="right">Price</StyledTableCell>
+                     </TableRow>
+                  </TableHead>
+                  <TableBody>
+                     {priceList.map((row, index) => (
+                        <StyledTableRow key={row.name}>
+                           <StyledTableCell
+                              className="text-center"
+                              component="th"
+                              scope="row"
+                           >
+                              {row.id}
+                           </StyledTableCell>
+                           <StyledTableCell component="th" scope="row">
+                              <img
+                                 style={{ width: "50px", height: "50px" }}
+                                 src={row?.image}
+                                 alt=""
+                              />
+                           </StyledTableCell>
+                           <StyledTableCell
+                              className="w-100 text-center"
+                              component="th"
+                              scope="row"
+                           >
+                              {row.name}
+                           </StyledTableCell>
+                           <StyledTableCell className="w-100" align="right">
+                              <input
+                                 type="number"
+                                 className="w-100 text-end border-0 bg-transparent"
+                                 value={priceList[index].price} // Corrected line
+                                 onChange={(e) =>
+                                    handlePriceChange(index, parseInt(e.target.value))
+                                 }
+                              />
+                           </StyledTableCell>
+                        </StyledTableRow>
+                     ))}
+                  </TableBody>
+               </Table>
+            </TableContainer>
+         </Container>
+      </Box>
    );
 }

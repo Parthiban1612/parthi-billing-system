@@ -14,7 +14,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
    },
 }));
 
-export default function CustomizedButtons({ path, type }) {
+export default function CustomizedButtons({ path, type, name }) {
    const navigate = useNavigate();
    return (
       <ColorButton
@@ -32,7 +32,7 @@ export default function CustomizedButtons({ path, type }) {
          }
          variant="contained"
       >
-         {type === "create" ? "Create bill" : "Set price"}
+         {name}
       </ColorButton>
    );
 }
