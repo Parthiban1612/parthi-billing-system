@@ -16,8 +16,8 @@ import brinjal from "../../images/brinjal_vari.png";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useSelector } from "react-redux";
 import BottomNavigation from "../../components/bottom-nav/BottomNavigation";
-import html2canvas from 'html2canvas';
-import html2pdf from 'html2pdf.js';
+// import html2canvas from 'html2canvas';
+// import html2pdf from 'html2pdf.js';
 
 const combinedArray = [
    { id: 1, image: carrot, name: "Carrot", price: 70 },
@@ -39,9 +39,7 @@ export default function CreateBill() {
    const [totalPrice, setTotalPrice] = useState(0);
    const quantityInputRef = useRef(null);
 
-   const { authDetails } = useSelector((state) => state.authData)
-
-   console.log(authDetails);
+   // const { authDetails } = useSelector((state) => state.authData)
 
    useEffect(() => {
       if (!localStorage?.getItem("combinedArray")) {
@@ -111,32 +109,32 @@ export default function CreateBill() {
       localStorage.setItem("currentBill", JSON.stringify(updatedItems));
    };
 
-   const billingData = [
-      {
-         invoiceNumber: "INV-001",
-         date: "2024-04-07",
-         customerName: "John Doe",
-         address: "123 Main St, City, Country"
-      },
-      {
-         invoiceNumber: "INV-002",
-         date: "2024-04-08",
-         customerName: "Jane Smith",
-         address: "456 Elm St, Town, Country"
-      },
-      // Add more billing data objects as needed
-   ];
+   // const billingData = [
+   //    {
+   //       invoiceNumber: "INV-001",
+   //       date: "2024-04-07",
+   //       customerName: "John Doe",
+   //       address: "123 Main St, City, Country"
+   //    },
+   //    {
+   //       invoiceNumber: "INV-002",
+   //       date: "2024-04-08",
+   //       customerName: "Jane Smith",
+   //       address: "456 Elm St, Town, Country"
+   //    },
+   //    // Add more billing data objects as needed
+   // ];
 
    const pdfRef = useRef(null);
 
-   const generatePDF = () => {
-      const element = pdfRef.current;
+   // const generatePDF = () => {
+   //    const element = pdfRef.current;
 
-      html2canvas(element).then(canvas => {
-         const pdf = new html2pdf();
-         pdf.from(canvas).save('billing_list.pdf');
-      });
-   };
+   //    html2canvas(element).then(canvas => {
+   //       const pdf = new html2pdf();
+   //       pdf.from(canvas).save('billing_list.pdf');
+   //    });
+   // };
 
    return (
       <Container sx={{ padding: 1 }}>
@@ -254,7 +252,7 @@ export default function CreateBill() {
             )} */}
          </div>
          <div>
-            <button onClick={generatePDF}>Generate PDF</button>
+            {/* <button onClick={generatePDF}>Generate PDF</button> */}
             <div ref={pdfRef}>
                <table className="table table-striped text-center">
                   <thead>
