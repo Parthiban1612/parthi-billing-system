@@ -18,7 +18,8 @@ import pattani from "../images/pattani.png";
 import drum_stick from "../images/drumstick.png";
 import brinjal from "../images/brinjal_vari.png";
 import { useEffect, useState } from "react";
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
+import CustomBack from "../components/custom-back/CustomBack";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
    [`&.${tableCellClasses.head}`]: {
@@ -76,8 +77,9 @@ export default function AllCurrentVegetablePrices() {
    };
 
    return (
-      <Box>
-         <Container className="my-3">
+      <>
+         <CustomBack title={"Set products rate"} />
+         <Container sx={{ padding: 1 }}>
             <TableContainer component={Paper}>
                <Table aria-label="customized table">
                   <TableHead>
@@ -104,8 +106,7 @@ export default function AllCurrentVegetablePrices() {
                               <img
                                  style={{ width: "50px", height: "50px" }}
                                  src={row?.image}
-                                 alt=""
-                              />
+                                 alt="" />
                            </StyledTableCell>
                            <StyledTableCell
                               className="w-100 text-center"
@@ -119,10 +120,7 @@ export default function AllCurrentVegetablePrices() {
                                  type="number"
                                  className="w-100 text-end border-0 bg-transparent"
                                  value={priceList[index].price} // Corrected line
-                                 onChange={(e) =>
-                                    handlePriceChange(index, parseInt(e.target.value))
-                                 }
-                              />
+                                 onChange={(e) => handlePriceChange(index, parseInt(e.target.value))} />
                            </StyledTableCell>
                         </StyledTableRow>
                      ))}
@@ -130,6 +128,6 @@ export default function AllCurrentVegetablePrices() {
                </Table>
             </TableContainer>
          </Container>
-      </Box>
+      </>
    );
 }

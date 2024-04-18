@@ -1,15 +1,10 @@
-import React from "react";
 import { Container } from "@mui/material";
-import BottomNavigation from "../components/bottom-nav/BottomNavigation";
+import React from "react";
 
 export default function Home() {
-
    return (
-      <Container>
-         <div className="row align-items-center justify-content-center gap-2 my-5">
-            <p className="text-center poppins-semibold">Parthi billing system</p>
-         </div>
-         <BottomNavigation />
+      <Container sx={{ padding: 1 }}>
+         <h3>Home</h3>
       </Container>
    );
 }

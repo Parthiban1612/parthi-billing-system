@@ -139,8 +139,8 @@ export default function CreateBill() {
    };
 
    return (
-      <Container>
-         <div className="m-2">
+      <Container sx={{ padding: 1 }}>
+         <div>
             <div className="d-flex my-3 gap-1">
                <CustomizedButtons name='Set Price' path={"/all-prices"} />
                <Button
@@ -253,7 +253,7 @@ export default function CreateBill() {
                </div>
             )} */}
          </div>
-         <div className="pb-5 mb-5">
+         <div>
             <button onClick={generatePDF}>Generate PDF</button>
             <div ref={pdfRef}>
                <table className="table table-striped text-center">
@@ -327,7 +327,6 @@ export default function CreateBill() {
                <p className="float-end mb-0 pe-2">Total : {totalPrice}</p>
             </div>
          </div>
-         <BottomNavigation />
       </Container>
    );
 }

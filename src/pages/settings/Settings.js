@@ -1,14 +1,12 @@
 import { Container } from '@mui/material'
 import React from 'react'
-import BottomNavigation from '../../components/bottom-nav/BottomNavigation'
-import CustomBack from '../../components/custom-back/CustomBack'
+import { Link } from 'react-router-dom'
 
 export default function Settings() {
   return (
-    <>
-      <Container>
-        <BottomNavigation />
-      </Container>
-    </>
+    <Container sx={{ padding: 1 }}>
+      <h3>Settings</h3>
+      <Link to={"/about-us"}>About us</Link>
+    </Container>
   )
 }
