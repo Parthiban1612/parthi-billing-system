@@ -1,6 +1,8 @@
+import AppRouter from "./routes/AppRouter";
+
 function App() {
   return (
-    <h4>Selva billing</h4>
+    <AppRouter />
   );
 }
 

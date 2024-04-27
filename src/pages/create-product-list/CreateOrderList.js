@@ -7,7 +7,7 @@ export default function ProductList() {
   return (
     <>
       <CustomBack title={"Products List"} />
-      <Container className='my-2'>
+      <Container>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint nesciunt tempore cupiditate, assumenda maiores vitae deleniti pariatur asperiores officiis non nam ducimus! Dolore reiciendis recusandae quod ratione aliquid velit provident.
         <CreateOrderForm />
       </Container>

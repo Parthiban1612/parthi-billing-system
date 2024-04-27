@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Home() {
    return (
-      <Container sx={{ padding: 1 }}>
+      <Container>
          <h3>Home</h3>
       </Container>
    );

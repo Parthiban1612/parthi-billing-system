@@ -33,7 +33,7 @@ export default function BottomNavigations() {
       icon: pathname === '/' ? <IoHome /> : <IoHomeOutline />
     },
     {
-      pageName: "Products List",
+      pageName: "List",
       pathname: "/products-list",
       icon: pathname === '/products-list' ? <FaListAlt /> : <FaList />
     },

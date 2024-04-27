@@ -1,5 +1,6 @@
+import { Box, IconButton, Typography } from '@mui/material';
 import React from 'react'
-import { IoArrowBackCircle } from "react-icons/io5";
+import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 
 export default function CustomBack({ title }) {
@@ -7,9 +8,35 @@ export default function CustomBack({ title }) {
   const router = useNavigate();
 
   return (
-    <div className='bg-primary p-3 position-relative'>
-      <IoArrowBackCircle onClick={() => router(-1)} size={24} className='text-light position-absolute' style={{ left: "20px" }} />
-      <p className='text-center text-light fw-bold mb-0'>{title}</p>
-    </div>
+    <Box
+      position={'fixed'}
+      width={'100%'}
+    >
+      <Box
+        position={'relative'}
+        bgcolor={'blue'}
+        p={1.5}
+      >
+        <IconButton
+          onClick={() => router(-1)}
+          sx={{
+            position: 'absolute',
+            padding: 0
+          }}
+        >
+          <MdArrowBack
+            size={23}
+            color='white'
+          />
+        </IconButton>
+        <Typography
+          color={'white'}
+          textAlign={'center'}
+          fontWeight={'bold'}
+        >
+          {title}
+        </Typography>
+      </Box>
+    </Box>
   )
 }

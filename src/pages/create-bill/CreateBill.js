@@ -2,36 +2,13 @@ import React, { useEffect, useState, useRef } from "react";
 import CustomizedButtons from "../../components/CustomizedButtons";
 import { Button, Container, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import carrot from "../../images/carrot.png";
-import beans from "../../images/beans.png";
-import beat from "../../images/beat.png";
-import avara from "../../images/avara.png";
-import chilly from "../../images/chilly.png";
-import sambar from "../../images/sambar.png";
-import capsi from "../../images/capsi.png";
-import ginger from "../../images/ginger.png";
-import pattani from "../../images/pattani.png";
-import drum_stick from "../../images/drumstick.png";
-import brinjal from "../../images/brinjal_vari.png";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useSelector } from "react-redux";
-import BottomNavigation from "../../components/bottom-nav/BottomNavigation";
+// import { useSelector } from "react-redux";
+// import BottomNavigation from "../../components/bottom-nav/BottomNavigation";
+import { combinedArray } from "../../lib/product-list/productList";
 // import html2canvas from 'html2canvas';
 // import html2pdf from 'html2pdf.js';
 
-const combinedArray = [
-   { id: 1, image: carrot, name: "Carrot", price: 70 },
-   { id: 2, image: beat, name: "Beatroot", price: 35 },
-   { id: 3, image: beans, name: "Beans", price: 65 },
-   { id: 4, image: brinjal, name: "Vari", price: 20 },
-   { id: 5, image: avara, name: "Avara", price: 20 },
-   { id: 6, image: ginger, name: "Ginger", price: 120 },
-   { id: 7, image: drum_stick, name: "Drum stick", price: 20 },
-   { id: 8, image: capsi, name: "Capsicum", price: 40 },
-   { id: 9, image: sambar, name: "Sambar", price: 45 },
-   { id: 10, image: chilly, name: "Chilly", price: 35 },
-   { id: 11, image: pattani, name: "Pattani", price: 65 },
-];
 
 export default function CreateBill() {
    const [priceList, setPriceList] = useState([]);
@@ -151,7 +128,7 @@ export default function CreateBill() {
                </Button>
             </div>
             <div className="d-flex gap-2">
-               <input
+               <TextField
                   list="product-list"
                   className="w-50"
                   max={10}
@@ -159,15 +136,16 @@ export default function CreateBill() {
                   label="Item ID"
                   variant="outlined"
                   type="number"
+                  inputProps={{
+                     list: "product-list"
+                  }}
                />
                <datalist id="product-list">
-                  <option value={'1'}>Carrot</option>
-                  <option value={'2'}>Beatroot</option>
-                  <option value={'3'}>Beans</option>
-                  <option value={'4'}>Brinjal</option>
-                  <option value={'5'}>Broad Beans</option>
-                  <option value={'6'}>Ginger</option>
-                  <option value={'7'}>Drum stick</option>
+                  {combinedArray?.map((data, index) => {
+                     return (
+                        <option key={index} value={data?.id}>{data?.name}</option>
+                     )
+                  })}
                </datalist>
                <TextField
                   className="w-50"
