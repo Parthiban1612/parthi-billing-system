@@ -22,23 +22,19 @@ export default function CreateBill() {
       if (!localStorage?.getItem("combinedArray")) {
          localStorage.setItem("combinedArray", JSON.stringify(combinedArray));
       }
-      const storedCombinedArray = JSON.parse(
-         localStorage.getItem("combinedArray")
-      );
+      const storedCombinedArray = JSON.parse(localStorage.getItem("combinedArray"));
       setPriceList(storedCombinedArray);
    }, []);
 
    useEffect(() => {
-      const storedCombinedArray = JSON.parse(
-         localStorage.getItem("currentBill")
-      );
-      setPurchasedItems(storedCombinedArray);
+      const storedCombinedArray = JSON.parse(localStorage.getItem("currentBill"));
+      setPurchasedItems(storedCombinedArray || []);
    }, []);
 
    const handleGetProduct = (productId, quantity) => {
       const selectedItem = priceList.find((item) => item.id === productId);
       const newItem = { ...selectedItem, quantity: parseInt(quantity) };
-      setPurchasedItems((prevItems) => [...(prevItems || []), newItem]); // Ensuring prevItems is always an array
+      setPurchasedItems((prevItems) => [...(prevItems || []), newItem]);
       quantityInputRef.current.value = ""; // Clear quantity input
    };
 
@@ -54,10 +50,8 @@ export default function CreateBill() {
    }, [purchasedItems]);
 
    const handleAddItem = () => {
-      const productId = parseInt(
-         document.getElementById("outlined-basic").value
-      );
-      const quantity = parseInt(quantityInputRef.current.value);
+      const productId = parseInt(document.getElementById("outlined-basic").value);
+      const quantity = parseFloat(quantityInputRef.current.value); // Use parseFloat to allow .5 values
       if (!isNaN(productId) && !isNaN(quantity)) {
          handleGetProduct(productId, quantity);
          document.getElementById("outlined-basic").value = "";
@@ -66,22 +60,20 @@ export default function CreateBill() {
 
    const handleQuantityChange = (index, quantity) => {
       const updatedItems = [...purchasedItems];
-      updatedItems[index].quantity = parseInt(quantity);
+      updatedItems[index].quantity = parseFloat(quantity); // Use parseFloat to allow .5 values
       setPurchasedItems(updatedItems);
       localStorage.setItem("currentBill", JSON.stringify(updatedItems));
    };
 
    const handlePriceChange = (index, price) => {
       const updatedItems = [...purchasedItems];
-      updatedItems[index].price = parseInt(price);
+      updatedItems[index].price = parseFloat(price); // Use parseFloat to allow .5 values
       setPurchasedItems(updatedItems);
       localStorage.setItem("currentBill", JSON.stringify(updatedItems));
    };
 
    const handleDeleteItem = (id) => {
-      const updatedItems = purchasedItems.filter(
-         (item, _index) => _index !== id
-      );
+      const updatedItems = purchasedItems.filter((_, _index) => _index !== id);
       setPurchasedItems(updatedItems);
       localStorage.setItem("currentBill", JSON.stringify(updatedItems));
    };
