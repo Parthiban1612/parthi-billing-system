@@ -14,7 +14,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
    },
 }));
 
-export default function CustomizedButtons({ path, type, name }) {
+export default function CustomizedButtons({ path, type, name, fullWidth }) {
    const navigate = useNavigate();
    return (
       <ColorButton
@@ -26,7 +26,7 @@ export default function CustomizedButtons({ path, type, name }) {
                navigate(path);
             }
          }}
-         className="w-50"
+         className={`${fullWidth ? "w-100" : `w-50`}`}
          startIcon={
             type === "create" ? <ReceiptLongIcon /> : <CurrencyRupeeIcon />
          }

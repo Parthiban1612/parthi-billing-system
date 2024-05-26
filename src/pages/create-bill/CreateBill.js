@@ -7,7 +7,6 @@ import { combinedArray } from "../../lib/product-list/productList";
 import { styled } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
-import ConfirmBill from "../confirm-bill/ConfirmBill";
 import { formatRupees } from "../../lib/convertRuppee";
 
 export default function CreateBill() {

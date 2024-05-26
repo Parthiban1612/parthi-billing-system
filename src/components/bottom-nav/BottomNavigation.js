@@ -57,7 +57,7 @@ export default function BottomNavigations() {
     }
   }, [pathname, bottomNavList]);
 
-  const exludeBottomNavPaths = ['/about-us', '/all-prices', "/confirm-bill"];
+  const exludeBottomNavPaths = ['/about-us', '/all-prices', "/confirm-bill", "/stack"];
 
   return (
     <div style={bottomNavStyle}>

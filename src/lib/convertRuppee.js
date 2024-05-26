@@ -1,3 +1,4 @@
 export function formatRupees(amount) {
-  return amount.toLocaleString('en-IN').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  const validAmount = Number(amount) || 0; // Convert to number or default to 0 if conversion fails
+  return validAmount.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }

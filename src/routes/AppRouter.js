@@ -8,6 +8,7 @@ import ProductList from "../pages/product-list/ProductList";
 import Settings from "../pages/settings/Settings";
 import AboutUs from "../pages/about-us/AboutUs";
 import ConfirmBill from "../pages/confirm-bill/ConfirmBill";
+import Stack from "../pages/stack/Stack";
 
 export default function AppRouter() {
    return (
@@ -20,6 +21,7 @@ export default function AppRouter() {
          <Route path="/settings" element={<Settings />} />
          <Route path="/about-us" element={<AboutUs />} />
          <Route path="/confirm-bill" element={<ConfirmBill />} />
+         <Route path="/stack" element={<Stack />} />
       </Routes>
    );
 }
