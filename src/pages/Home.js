@@ -26,7 +26,7 @@ export default function Home() {
             <CustomizedButtons fullWidth name='Customers Pending' path={"/customers-pending"} />
          </div>
 
-         <button className="btn btn-success" onClick={handlePost}>Post</button>
+         {/* <button className="btn btn-success" onClick={handlePost}>Post</button> */}
 
       </Container>
    );
