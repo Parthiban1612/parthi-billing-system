@@ -9,7 +9,9 @@ import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import { Box, Container } from "@mui/material";
 import CustomBack from "../components/custom-back/CustomBack";
-import { combinedArray } from "../lib/product-list/productList";
+import axios from "axios";
+import { Config } from "../api/config";
+import { combinedArray } from "../lib/product-list/productList"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
    [`&.${tableCellClasses.head}`]: {
@@ -35,6 +37,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function AllCurrentVegetablePrices() {
    const [priceList, setPriceList] = useState([]);
 
+   console.log(priceList);
+
    useEffect(() => {
       if (!localStorage?.getItem("combinedArray")) {
          localStorage.setItem("combinedArray", JSON.stringify(combinedArray));
@@ -51,6 +55,25 @@ export default function AllCurrentVegetablePrices() {
       setPriceList(updatedPriceList);
       localStorage.setItem("combinedArray", JSON.stringify(updatedPriceList));
    };
+
+   const [productsList, setProductsList] = useState(null);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState(null);
+
+   // useEffect(() => {
+   //    const fetchData = async () => {
+   //       try {
+   //          const response = await axios.get(Config.GET_ALL_PRODUCTS);
+   //          setProductsList(response.data);
+   //       } catch (err) {
+   //          setError(err);
+   //       } finally {
+   //          setLoading(false);
+   //       }
+   //    };
+
+   //    fetchData();
+   // }, []);
 
    return (
       <>
@@ -70,8 +93,8 @@ export default function AllCurrentVegetablePrices() {
                         </TableRow>
                      </TableHead>
                      <TableBody>
-                        {priceList.map((row, index) => (
-                           <StyledTableRow key={row.name}>
+                        {priceList?.map((row, index) => (
+                           <StyledTableRow key={index}>
                               <StyledTableCell
                                  className="text-center"
                                  component="th"
@@ -90,14 +113,15 @@ export default function AllCurrentVegetablePrices() {
                                  component="th"
                                  scope="row"
                               >
-                                 {row.name}
+                                 {row?.name}
                               </StyledTableCell>
                               <StyledTableCell className="w-100" align="right">
                                  <input
                                     type="number"
                                     className="w-100 text-end border-0 bg-transparent"
-                                    value={priceList[index].price} // Corrected line
-                                    onChange={(e) => handlePriceChange(index, parseInt(e.target.value))} />
+                                    value={row?.price} // Corrected line
+                                    onChange={(e) => handlePriceChange(index, parseInt(e.target.value))}
+                                 />
                               </StyledTableCell>
                            </StyledTableRow>
                         ))}

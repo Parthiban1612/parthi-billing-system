@@ -9,6 +9,8 @@ import Settings from "../pages/settings/Settings";
 import AboutUs from "../pages/about-us/AboutUs";
 import ConfirmBill from "../pages/confirm-bill/ConfirmBill";
 import Stack from "../pages/stack/Stack";
+import CustomersPending from "../pages/customers-pendings/CustomersPending";
+import SingleCustomerPending from "../pages/single-customer-pendings/SingleCustomerPending";
 
 export default function AppRouter() {
    return (
@@ -22,6 +24,8 @@ export default function AppRouter() {
          <Route path="/about-us" element={<AboutUs />} />
          <Route path="/confirm-bill" element={<ConfirmBill />} />
          <Route path="/stack" element={<Stack />} />
+         <Route path="/customers-pending" element={<CustomersPending />} />
+         <Route path="/customers-pending/:id" element={<SingleCustomerPending />} />
       </Routes>
    );
 }
