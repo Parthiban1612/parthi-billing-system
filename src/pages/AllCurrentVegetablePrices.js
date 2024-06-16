@@ -9,8 +9,6 @@ import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import { Box, Container } from "@mui/material";
 import CustomBack from "../components/custom-back/CustomBack";
-import axios from "axios";
-import { Config } from "../api/config";
 import { combinedArray } from "../lib/product-list/productList"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({

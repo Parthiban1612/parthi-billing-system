@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import CustomizedButtons from "../../components/CustomizedButtons";
 import { Button, Container, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -8,13 +8,16 @@ import { styled } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import { formatRupees } from "../../lib/convertRuppee";
+import { Autocomplete, Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+
 
 export default function CreateBill() {
    const [priceList, setPriceList] = useState([]);
    const [purchasedItems, setPurchasedItems] = useState([]);
    const [totalPrice, setTotalPrice] = useState(0);
-   const quantityInputRef = useRef(null);
    const navigate = useNavigate();
+   const [productId, setProductId] = useState('');
+   const [quantity, setQuantity] = useState('');
 
    useEffect(() => {
       if (!localStorage?.getItem("combinedArray")) {
@@ -33,7 +36,8 @@ export default function CreateBill() {
       const selectedItem = priceList.find((item) => item.id === productId);
       const newItem = { ...selectedItem, quantity: parseInt(quantity), total: quantity * selectedItem?.price };
       setPurchasedItems((prevItems) => [...(prevItems || []), newItem]);
-      quantityInputRef.current.value = ""; // Clear quantity input
+      setQuantity(null);
+      setProductId(null);
    };
 
    useEffect(() => {
@@ -48,11 +52,10 @@ export default function CreateBill() {
    }, [purchasedItems]);
 
    const handleAddItem = () => {
-      const productId = parseInt(document.getElementById("outlined-basic").value);
-      const quantity = parseFloat(quantityInputRef.current.value); // Use parseFloat to allow .5 values
       if (!isNaN(productId) && !isNaN(quantity)) {
          handleGetProduct(productId, quantity);
-         document.getElementById("outlined-basic").value = "";
+         setProductId(null);
+         setQuantity('');
       }
    };
 
@@ -101,7 +104,7 @@ export default function CreateBill() {
                </Button>
             </div>
             <div className="d-flex gap-2">
-               <TextField
+               {/* <TextField
                   list="product-list"
                   className="w-50"
                   max={10}
@@ -112,6 +115,64 @@ export default function CreateBill() {
                   inputProps={{
                      list: "product-list"
                   }}
+               /> */}
+               {/* <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                  <Select
+                     labelId="demo-simple-select-label"
+                     id="demo-simple-select"
+                     value={age}
+                     label="Age"
+                     onChange={handleChange}
+                  >
+                     {combinedArray?.map((data, index) => {
+                        return (
+                           <MenuItem key={index} value={data?.id}>{data?.name}</MenuItem>
+                        )
+                     })}
+                  </Select>
+               </FormControl> */}
+               {/* <Autocomplete
+                  fullWidth
+                  id="demo-simple-autocomplete"
+                  options={combinedArray}
+                  getOptionLabel={(option) => option?.name || ''}
+                  value={combinedArray.find((option) => option?.id === productId) || null}
+                  onChange={(event, newValue) => {
+                     setProductId(newValue?.id);
+                  }}
+                  renderInput={(params) => (
+                     <TextField
+                        {...params}
+                        label="Product"
+                        variant="outlined"
+                     />
+                  )}
+               /> */}
+               <Autocomplete
+                  fullWidth
+                  id="demo-simple-autocomplete"
+                  options={combinedArray}
+                  getOptionLabel={(option) => option?.name || ''}
+                  value={combinedArray.find((option) => option?.id === productId) || null}
+                  onChange={(event, newValue) => {
+                     setProductId(newValue?.id);
+                  }}
+                  renderInput={(params) => (
+                     <TextField
+                        {...params}
+                        label="Product"
+                        variant="outlined"
+                     />
+                  )}
+                  renderOption={(props, option) => (
+                     <ListItem {...props} key={option.id}>
+                        <ListItemAvatar>
+                           <Avatar src={option?.image} />
+                        </ListItemAvatar>
+                        <ListItemText primary={option?.name} />
+                     </ListItem>
+                  )}
                />
                <datalist id="product-list">
                   {combinedArray?.map((data, index) => {
@@ -125,7 +186,8 @@ export default function CreateBill() {
                   label="Quantity"
                   variant="outlined"
                   type="number"
-                  inputRef={quantityInputRef}
+                  value={quantity || ''}
+                  onChange={(event) => setQuantity(event?.target?.value)}
                />
             </div>
          </div>
