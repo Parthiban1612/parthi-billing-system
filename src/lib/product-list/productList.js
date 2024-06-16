@@ -8,7 +8,6 @@ import capsi from "../../images/capsi.png";
 import ginger from "../../images/ginger.png";
 import pattani from "../../images/pattani.png";
 import drum_stick from "../../images/drumstick.png";
-// import brinjal from "../../images/brinjal_vari.png";
 import raddish from "../../images/raddish.png";
 import bear from "../../images/bear.png";
 import vari from "../../images/brinjal_vari.png";
@@ -22,10 +21,32 @@ import lemon from "../../images/lemon.png";
 import mint from "../../images/mint.png";
 import panneer from "../../images/panneer.png";
 import mushroom from "../../images/mushroom.png";
-import potato from "../../images/potato.png";
+import potato from "../../images/potato.jpg";
 import sembu from "../../images/sembu.png";
 import senai from "../../images/senai.png";
 import ujala from "../../images/ujala.png";
+import broccoli from "../../images/broccoli.png";
+import celery from "../../images/celery.webp";
+import chinese_cabbage from "../../images/chinese_cabbage.png";
+import chow from "../../images/chow.jpg";
+import cucumber from "../../images/cucumber.png";
+import dosalay from "../../images/dosalay.webp";
+import garlic from "../../images/garlic.png";
+import kothavaranga from "../../images/kothavaranga.png";
+import long_beans from "../../images/long_beans.png";
+import lookkal from "../../images/lookkal.png";
+import mango from "../../images/mango.jpg";
+import maravalli from "../../images/maravalli.webp";
+import onion from "../../images/onion.png";
+import parsley from "../../images/parsley.jpg";
+import pumbkin from "../../images/pumbkin.jpeg";
+import red_capsi from "../../images/red_capsi.jpg";
+import snake_gaurd from "../../images/snake_gaurd.png";
+import spring_onion from "../../images/spring_onion.jpg";
+import suraikay from "../../images/suraikay.jpg";
+import sweet_potato from "../../images/sweet_potato.png";
+import tomato from "../../images/tomato.png";
+import zucchini from "../../images/zucchini.png";
 
 export const combinedArray = [
   { id: 1, image: carrot, name: "Carrot", price: 65 },
@@ -43,7 +64,7 @@ export const combinedArray = [
   { id: 13, image: vari, name: "Brinjal", price: 40 },
   { id: 14, image: cabbage, name: "Cabbage", price: 30 },
   { id: 15, image: coconut, name: "Coconut", price: 34 },
-  { id: 16, image: kovai, name: "ivy gourd", price: 40 },
+  { id: 16, image: kovai, name: "Ivy gourd", price: 40 },
   { id: 17, image: panneer, name: "Bitter gourd", price: 40 },
   { id: 18, image: potato, name: "Potato", price: 25 },
   { id: 19, image: sembu, name: "Sembu", price: 45 },
@@ -55,4 +76,26 @@ export const combinedArray = [
   { id: 25, image: coriender, name: "Coriander", price: 15 },
   { id: 26, image: mint, name: "Mint", price: 15 },
   { id: 27, image: curry_leaves, name: "Curry leaves", price: 100 },
+  { id: 28, image: broccoli, name: "Broccoli", price: 150 },
+  { id: 29, image: celery, name: "Celery", price: 60 },
+  { id: 30, image: chinese_cabbage, name: "Chinese cabbage", price: 50 },
+  { id: 31, image: chow, name: "Chow chow", price: 40 },
+  { id: 32, image: cucumber, name: "Cucumber", price: 20 },
+  { id: 33, image: dosalay, name: "Dosakaya", price: 25 },
+  { id: 34, image: garlic, name: "Garlic", price: 200 },
+  { id: 35, image: kothavaranga, name: "Cluster beans", price: 60 },
+  { id: 36, image: long_beans, name: "Long beans", price: 55 },
+  { id: 37, image: lookkal, name: "Mookkai", price: 30 },
+  { id: 38, image: mango, name: "Mango", price: 80 },
+  { id: 39, image: maravalli, name: "Maravalli", price: 45 },
+  { id: 40, image: onion, name: "Onion", price: 30 },
+  { id: 41, image: parsley, name: "Parsley", price: 60 },
+  { id: 42, image: pumbkin, name: "Pumpkin", price: 25 },
+  { id: 43, image: red_capsi, name: "Red capsicum", price: 80 },
+  { id: 44, image: snake_gaurd, name: "Snake gourd", price: 35 },
+  { id: 45, image: spring_onion, name: "Spring onion", price: 40 },
+  { id: 46, image: suraikay, name: "Bottle gourd", price: 30 },
+  { id: 47, image: sweet_potato, name: "Sweet potato", price: 50 },
+  { id: 48, image: tomato, name: "Tomato", price: 25 },
+  { id: 49, image: zucchini, name: "Zucchini", price: 60 },
 ];
