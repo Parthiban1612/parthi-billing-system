@@ -135,12 +135,20 @@ export class ComponentToPrint extends React.PureComponent {
                       <td className="px-0">{formatRupees(item?.total)}</td>
                     </tr>
                   ))}
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <p className="fw-bold">Total : ₹ {formatRupees(this?.props?.total)}</p>
+                    </td></tr>
                 </>
               )}
             </tbody>
           </table>
           <div className="float-end me-3">
-            <p className="fw-bold">Total : ₹ {formatRupees(this?.props?.total)}</p>
           </div>
         </div>
       </div>
