@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { formatRupees } from "../../lib/convertRuppee";
 import { Autocomplete, Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 
-
 export default function CreateBill() {
    const [priceList, setPriceList] = useState([]);
    const [purchasedItems, setPurchasedItems] = useState([]);
@@ -18,6 +17,8 @@ export default function CreateBill() {
    const navigate = useNavigate();
    const [productId, setProductId] = useState('');
    const [quantity, setQuantity] = useState('');
+
+
 
    useEffect(() => {
       if (!localStorage?.getItem("combinedArray")) {
@@ -104,51 +105,6 @@ export default function CreateBill() {
                </Button>
             </div>
             <div className="d-flex gap-2">
-               {/* <TextField
-                  list="product-list"
-                  className="w-50"
-                  max={10}
-                  id="outlined-basic"
-                  label="Item ID"
-                  variant="outlined"
-                  type="number"
-                  inputProps={{
-                     list: "product-list"
-                  }}
-               /> */}
-               {/* <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                  <Select
-                     labelId="demo-simple-select-label"
-                     id="demo-simple-select"
-                     value={age}
-                     label="Age"
-                     onChange={handleChange}
-                  >
-                     {combinedArray?.map((data, index) => {
-                        return (
-                           <MenuItem key={index} value={data?.id}>{data?.name}</MenuItem>
-                        )
-                     })}
-                  </Select>
-               </FormControl> */}
-               {/* <Autocomplete
-                  fullWidth
-                  id="demo-simple-autocomplete"
-                  options={combinedArray}
-                  getOptionLabel={(option) => option?.name || ''}
-                  value={combinedArray.find((option) => option?.id === productId) || null}
-                  onChange={(event, newValue) => {
-                     setProductId(newValue?.id);
-                  }}
-                  renderInput={(params) => (
-                     <TextField
-                        {...params}
-                        label="Product"
-                        variant="outlined"
-                     />
-                  )}
-               /> */}
                <Autocomplete
                   fullWidth
                   id="demo-simple-autocomplete"
@@ -174,13 +130,6 @@ export default function CreateBill() {
                      </ListItem>
                   )}
                />
-               <datalist id="product-list">
-                  {combinedArray?.map((data, index) => {
-                     return (
-                        <option key={index} value={data?.id}>{data?.name}</option>
-                     )
-                  })}
-               </datalist>
                <TextField
                   className="w-50"
                   label="Quantity"
@@ -268,6 +217,6 @@ export default function CreateBill() {
                </div>
             </div>
          }
-      </Container>
+      </Container >
    );
 }

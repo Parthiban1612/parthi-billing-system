@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import { FunctionalComponentToPrint } from './ComponentToPrint';
 import LinearProgress from '@mui/material/LinearProgress';
+import { FaDownload } from 'react-icons/fa';
 
 export default function ConfirmBill() {
 
@@ -65,7 +66,14 @@ export default function ConfirmBill() {
   }));
 
   const reactToPrintTrigger = useCallback(() => {
-    return <ColorButton disabled={loading} variant="contained" className="w-100">Download as pdf</ColorButton>
+    return <Button
+      disabled={loading} variant="contained"
+      className="w-100 mb-2"
+      color="secondary"
+      startIcon={<FaDownload />}
+    >
+      Download as PDF
+    </Button>
   }, []);
 
   const [purchasedItems, setPurchasedItems] = useState([]);
