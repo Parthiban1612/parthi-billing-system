@@ -3,11 +3,11 @@ import { formatRupees } from "../../lib/convertRuppee";
 import html2canvas from "html2canvas";
 import moment from "moment/moment";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { Badge, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { FaDownload } from "react-icons/fa6";
+import { FaDownload, FaIndianRupeeSign } from "react-icons/fa6";
 
 export class ComponentToPrint extends React.PureComponent {
   constructor(props) {
@@ -67,34 +67,42 @@ export class ComponentToPrint extends React.PureComponent {
 
     return (
       <div className="relativeCSS">
-        <Stack className="mb-3" direction="row" spacing={2}>
+        <Stack className="mb-1 px-2 pt-2" direction="row" spacing={2}>
           <Button
             className="w-100"
             onClick={this.takeScreenShot}
             variant="contained"
             color="secondary"
             startIcon={<FaDownload />}>
-            Download as image
+            Download
           </Button>
         </Stack>
         <style type="text/css" media="print">
           {"@page { size: landscape; }"}
         </style>
         <div className="flash" />
-        <div id="divToTakeScreenshot">
-          <div className="d-flex align-items-center gap-4 ms-2">
-            <TextField
-              id="standard-basic"
-              variant="standard"
-              label="Customer name"
-              onChange={(e) => this.setState({ customerName: e.target.value })}
-            />
-            <div className="d-flex align-center mt-3">
-              <FaRegCalendarAlt />
-              <h6 className="mb-0">{formattedDate}</h6>
+        <div id="divToTakeScreenshot" className="px-2">
+          <div className="row align-items-center ms-1 pt-2">
+            <div className="col-12 mb-0">
+              <p className="mb-0 text-end me-2" style={{ opacity: .6, fontSize: "12px" }}>parthi-billing-system</p>
+            </div>
+            <div className="col-8">
+              <TextField
+                className="w-100"
+                id="standard-basic"
+                variant="standard"
+                label="Customer name"
+                onChange={(e) => this.setState({ customerName: e.target.value })}
+              />
+            </div>
+            <div className="col-4">
+              <div className="d-flex align-center gap-2 mt-3 w-100">
+                <FaRegCalendarAlt />
+                <h6 className="mb-0">{formattedDate}</h6>
+              </div>
             </div>
           </div>
-          <table className="testClass table table-striped text-center">
+          <table className="testClass table table-striped text-center mt-2">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -116,7 +124,7 @@ export class ComponentToPrint extends React.PureComponent {
               {purchasedItems && (
                 <>
                   {purchasedItems?.map((item, index) => (
-                    <tr key={index}>
+                    <tr key={index} className="table-row">
                       <th scope="row">{index + 1}</th>
                       <td className="px-0">
                         <img
@@ -135,20 +143,14 @@ export class ComponentToPrint extends React.PureComponent {
                       <td className="px-0">{formatRupees(item?.total)}</td>
                     </tr>
                   ))}
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <p className="fw-bold">Total : ₹ {formatRupees(this?.props?.total)}</p>
-                    </td></tr>
                 </>
               )}
             </tbody>
           </table>
-          <div className="float-end me-3">
+          <div className="row me-1">
+            <p className="fw-bold text-end">Total :
+              <FaIndianRupeeSign />
+              {formatRupees(this?.props?.total)}</p>
           </div>
         </div>
       </div>

@@ -68,7 +68,7 @@ export default function ConfirmBill() {
   const reactToPrintTrigger = useCallback(() => {
     return <Button
       disabled={loading} variant="contained"
-      className="w-100 mb-2"
+      className="w-100 mb-2 d-none"
       color="secondary"
       startIcon={<FaDownload />}
     >
@@ -98,7 +98,7 @@ export default function ConfirmBill() {
   return (
     <>
       <CustomBack title={"Share your generated bill"} />
-      <Container sx={{ padding: 1 }}>
+      <Container className='p-0'>
         <Box pt={6}>
           <ReactToPrint
             content={reactToPrintContent}

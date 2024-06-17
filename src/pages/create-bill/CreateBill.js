@@ -9,6 +9,7 @@ import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import { formatRupees } from "../../lib/convertRuppee";
 import { Autocomplete, Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { FaIndianRupeeSign } from "react-icons/fa6";
 
 export default function CreateBill() {
    const [priceList, setPriceList] = useState([]);
@@ -140,7 +141,7 @@ export default function CreateBill() {
                />
             </div>
          </div>
-         <table className="table table-striped text-center">
+         <table className="table table-striped text-center mt-2">
             <thead>
                <tr>
                   <th scope="col">#</th>
@@ -208,15 +209,18 @@ export default function CreateBill() {
                )}
             </tbody>
          </table>
-         <p className="float-end pe-2">Total : {totalPrice}</p>
-         <br />
-         {purchasedItems?.length > 0 &&
-            <div className="mb-5 pb-5">
-               <div className="w-100">
-                  <ColorButton onClick={() => navigate("/confirm-bill")}>Print</ColorButton>
+         <div className="row me-1">
+            <p className="fw-bold text-end">Total :
+               <FaIndianRupeeSign />
+               {totalPrice}</p>
+         </div>
+         <div className="mx-2">
+            {purchasedItems?.length > 0 &&
+               <div className="mb-5 pb-3">
+                  <ColorButton className="w-100" onClick={() => navigate("/confirm-bill")}>Print</ColorButton>
                </div>
-            </div>
-         }
+            }
+         </div>
       </Container >
    );
 }
