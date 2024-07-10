@@ -8,6 +8,7 @@ import { TextField } from "@mui/material";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { FaDownload, FaIndianRupeeSign } from "react-icons/fa6";
+import DatePicker from "react-datepicker";
 
 export class ComponentToPrint extends React.PureComponent {
   constructor(props) {
@@ -95,10 +96,14 @@ export class ComponentToPrint extends React.PureComponent {
                 onChange={(e) => this.setState({ customerName: e.target.value })}
               />
             </div>
-            <div className="col-4">
-              <div className="d-flex align-center gap-2 mt-3 w-100">
-                <FaRegCalendarAlt />
-                <h6 className="mb-0">{formattedDate}</h6>
+            <div className="col-4 ps-0">
+              <div className="d-flex align-center gap-2 mt-3">
+                <FaRegCalendarAlt color="#9c27b0" size={33} />
+                <DatePicker
+                  className="w-100 border-0 fw-bold"
+                  popperPlacement="top-start" // or "top-end", "bottom-start", "bottom-end", etc.
+                  selected={new Date()}
+                  onChange={(date) => console.log(date)} />
               </div>
             </div>
           </div>
@@ -108,8 +113,8 @@ export class ComponentToPrint extends React.PureComponent {
                 <th scope="col">#</th>
                 <th scope="col">Item</th>
                 <th scope="col">Name</th>
-                <th scope="col">Price</th>
                 <th scope="col">Qnt</th>
+                <th scope="col">Price</th>
                 <th scope="col">Total</th>
               </tr>
             </thead>
@@ -135,10 +140,10 @@ export class ComponentToPrint extends React.PureComponent {
                       </td>
                       <td className="px-0">{item.name}</td>
                       <td className="px-0">
-                        {formatRupees(item.price)}
+                        {item.quantity}
                       </td>
                       <td className="px-0">
-                        {item.quantity}
+                        {formatRupees(item.price)}
                       </td>
                       <td className="px-0">{formatRupees(item?.total)}</td>
                     </tr>

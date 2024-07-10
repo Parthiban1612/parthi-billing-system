@@ -9,6 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from 'react-router-dom';
 import BottomNavigation from "./components/bottom-nav/BottomNavigation"
 import App from './App';
+import "react-datepicker/dist/react-datepicker.css";
 
 const { store, persistor } = makeStore();
 

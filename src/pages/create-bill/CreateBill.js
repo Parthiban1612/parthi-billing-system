@@ -147,8 +147,8 @@ export default function CreateBill() {
                   <th scope="col">#</th>
                   <th scope="col">Item</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Price</th>
                   <th scope="col">Qnt</th>
+                  <th scope="col">Price</th>
                   <th scope="col">Total</th>
                </tr>
             </thead>
@@ -169,9 +169,9 @@ export default function CreateBill() {
                            <td className="px-0">
                               <input
                                  className="text-center border-0 bg-transparent w-100"
-                                 value={formatRupees(item.price)}
+                                 value={item.quantity}
                                  onChange={(e) =>
-                                    handlePriceChange(
+                                    handleQuantityChange(
                                        index,
                                        e.target.value
                                     )
@@ -182,9 +182,9 @@ export default function CreateBill() {
                            <td className="px-0">
                               <input
                                  className="text-center border-0 bg-transparent w-100"
-                                 value={item.quantity}
+                                 value={formatRupees(item.price)}
                                  onChange={(e) =>
-                                    handleQuantityChange(
+                                    handlePriceChange(
                                        index,
                                        e.target.value
                                     )
