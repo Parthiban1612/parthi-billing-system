@@ -6,7 +6,7 @@ import CustomBack from '../../components/custom-back/CustomBack'
 export default function ProductList() {
   return (
     <>
-      <CustomBack title={"Products List"} />
+      <CustomBack title={"Products List"} path={"/products-list"} />
       <Container>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint nesciunt tempore cupiditate, assumenda maiores vitae deleniti pariatur asperiores officiis non nam ducimus! Dolore reiciendis recusandae quod ratione aliquid velit provident.
         <CreateOrderForm />

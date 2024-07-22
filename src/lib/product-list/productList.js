@@ -21,7 +21,7 @@ import lemon from "../../images/lemon.png";
 import mint from "../../images/mint.png";
 import panneer from "../../images/panneer.png";
 import mushroom from "../../images/mushroom.png";
-import potato from "../../images/potato.jpg";
+import potato from "../../images/potato.png";
 import sembu from "../../images/sembu.png";
 import senai from "../../images/senai.png";
 import ujala from "../../images/ujala.png";
@@ -47,6 +47,11 @@ import suraikay from "../../images/suraikay.jpg";
 import sweet_potato from "../../images/sweet_potato.png";
 import tomato from "../../images/tomato.png";
 import zucchini from "../../images/zucchini.png";
+import poosani from "../../images/ashgaurd.png";
+import groundnut from "../../images/groundnut.png";
+import cauliflower from "../../images/cauliflower.png";
+import raw_banana from "../../images/raw_banana.png";
+import bajji_chilli from "../../images/bajji_chilli.png";
 
 export const combinedArray = [
   { id: 1, image: carrot, name: "Carrot", price: 65 },
@@ -98,4 +103,9 @@ export const combinedArray = [
   { id: 47, image: sweet_potato, name: "Sweet potato", price: 50 },
   { id: 48, image: tomato, name: "Tomato", price: 25 },
   { id: 49, image: zucchini, name: "Zucchini", price: 60 },
+  { id: 50, image: poosani, name: "Poosani", price: 20 },
+  { id: 51, image: groundnut, name: "Groundnut", price: 60 },
+  { id: 52, image: cauliflower, name: "Cauliflower", price: 120 },
+  { id: 53, image: raw_banana, name: "Raw banana", price: 8 },
+  { id: 54, image: bajji_chilli, name: "Bajji chilly", price: 80 },
 ];

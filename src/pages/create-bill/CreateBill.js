@@ -97,6 +97,7 @@ export default function CreateBill() {
             <div className="d-flex my-3 gap-1">
                <CustomizedButtons name='Set Price' path={"/all-prices"} />
                <Button
+                  disabled={productId === '' || quantity === ''}
                   className="w-50"
                   variant="contained"
                   startIcon={<AddIcon />}

@@ -6,7 +6,7 @@ import DeveloperCard from '../../components/developer-card/DeveloperCard';
 export default function AboutUs() {
   return (
     <>
-      <CustomBack title={"About us"} />
+      <CustomBack title={"About us"} path="/settings" />
       <Container>
         <Box pt={7}>
           <Typography className='text-muted' sx={{ fontSize: "15px", textAlign: "justify", marginBottom: 1 }}>

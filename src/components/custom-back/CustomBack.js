@@ -3,7 +3,7 @@ import React from 'react'
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 
-export default function CustomBack({ title }) {
+export default function CustomBack({ title, path }) {
 
   const router = useNavigate();
 
@@ -18,7 +18,7 @@ export default function CustomBack({ title }) {
         p={1.5}
       >
         <IconButton
-          onClick={() => router(-1)}
+          onClick={() => router(path)}
           sx={{
             position: 'absolute',
             padding: 0

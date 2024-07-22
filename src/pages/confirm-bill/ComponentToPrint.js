@@ -64,7 +64,6 @@ export class ComponentToPrint extends React.PureComponent {
   render() {
 
     const purchasedItems = this.state?.purchasedItems;
-    const formattedDate = moment(this.state.date).format("DD-MM-YYYY");
 
     return (
       <div className="relativeCSS">
@@ -98,12 +97,14 @@ export class ComponentToPrint extends React.PureComponent {
             </div>
             <div className="col-4 ps-0">
               <div className="d-flex align-center gap-2 mt-3">
-                <FaRegCalendarAlt color="#9c27b0" size={33} />
+                {/* <FaRegCalendarAlt color="#9c27b0" size={33} /> */}
                 <DatePicker
+                  format="DD-MM-YYYY"
                   className="w-100 border-0 fw-bold"
                   popperPlacement="top-start" // or "top-end", "bottom-start", "bottom-end", etc.
-                  selected={new Date()}
-                  onChange={(date) => console.log(date)} />
+                  selected={this.state.date}
+                  dateFormat="dd-MM-yyyy"
+                  onChange={(date) => this.setState({ date: date })} />
               </div>
             </div>
           </div>
