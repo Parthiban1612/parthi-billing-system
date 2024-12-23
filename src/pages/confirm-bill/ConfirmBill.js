@@ -97,7 +97,7 @@ export default function ConfirmBill() {
 
   return (
     <>
-      <CustomBack title={"Share your generated bill"} />
+      <CustomBack path={"/create-bill"} title={"Share your generated bill"} />
       <Container className='p-0'>
         <Box pt={6}>
           <ReactToPrint

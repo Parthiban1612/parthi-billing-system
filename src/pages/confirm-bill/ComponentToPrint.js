@@ -19,6 +19,9 @@ export class ComponentToPrint extends React.PureComponent {
       purchasedItems: [],
       date: new Date(),
       customerName: "",
+      balanceAmountTotal: "",
+      finalTotal: "",
+      paidAmountTotal: ""
     };
   }
 
@@ -28,6 +31,21 @@ export class ComponentToPrint extends React.PureComponent {
 
     const storedCombinedArray = JSON.parse(localStorage.getItem("currentBill"));
     this.setState({ purchasedItems: storedCombinedArray || [] });
+
+    const storedPendingAmounts = JSON.parse(localStorage.getItem("pendingAmounts"));
+    const balanceAmountTotal = storedPendingAmounts
+      .filter(item => item.value > 0) // Get only positive values
+      .reduce((sum, item) => sum + item.value, 0); // Sum the values
+    this.setState({ balanceAmountTotal: balanceAmountTotal });
+    const varavuAmountTotal = storedPendingAmounts
+      .filter(item => item.value < 0) // Get only positive values
+      .reduce((sum, item) => sum + item.value, 0); // Sum the values
+    this.setState({ paidAmountTotal: varavuAmountTotal });
+
+    const finalTotal = storedPendingAmounts.reduce((acc, amount) => acc + amount.value, 0);
+    this.setState({ finalTotal: finalTotal });
+
+    console.log(finalTotal);
 
     const ctx = this.canvasEl.getContext("2d");
     if (ctx) {
@@ -64,6 +82,11 @@ export class ComponentToPrint extends React.PureComponent {
   render() {
 
     const purchasedItems = this.state?.purchasedItems;
+
+
+    const balanceAmountTotal = this.state.balanceAmountTotal;
+
+    const paidAmountTotal = this.state.paidAmountTotal;
 
     return (
       <div className="relativeCSS">
@@ -158,6 +181,29 @@ export class ComponentToPrint extends React.PureComponent {
               <FaIndianRupeeSign />
               {formatRupees(this?.props?.total)}</p>
           </div>
+          <div className="text-end me-2 d-flex flex-column justify-content-end">
+            {balanceAmountTotal > 0 &&
+              <>
+                <h6>
+                  Balance {balanceAmountTotal} <br />
+                </h6><hr className="my-2" />
+                <h6 >
+                  SubTotal {this?.props?.total + balanceAmountTotal}
+                </h6>
+              </>
+            }
+            {paidAmountTotal < 0 &&
+              <>
+                <h6>
+                  Varavu {paidAmountTotal}
+                </h6>
+                <hr className="my-2" />
+              </>
+            }
+          </div>
+          {paidAmountTotal < 0 &&
+            <h6 className="fw-bold text-end">Final Total: ₹{this?.props?.total + balanceAmountTotal + paidAmountTotal}</h6>
+          }
         </div>
       </div>
     );

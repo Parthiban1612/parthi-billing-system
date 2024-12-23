@@ -35,8 +35,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function AllCurrentVegetablePrices() {
    const [priceList, setPriceList] = useState([]);
 
-   console.log(priceList);
-
    useEffect(() => {
       if (!localStorage?.getItem("combinedArray")) {
          localStorage.setItem("combinedArray", JSON.stringify(combinedArray));
@@ -54,28 +52,9 @@ export default function AllCurrentVegetablePrices() {
       localStorage.setItem("combinedArray", JSON.stringify(updatedPriceList));
    };
 
-   const [productsList, setProductsList] = useState(null);
-   const [loading, setLoading] = useState(true);
-   const [error, setError] = useState(null);
-
-   // useEffect(() => {
-   //    const fetchData = async () => {
-   //       try {
-   //          const response = await axios.get(Config.GET_ALL_PRODUCTS);
-   //          setProductsList(response.data);
-   //       } catch (err) {
-   //          setError(err);
-   //       } finally {
-   //          setLoading(false);
-   //       }
-   //    };
-
-   //    fetchData();
-   // }, []);
-
    return (
       <>
-         <CustomBack title={"Set products rate"} />
+         <CustomBack path={"/create-bill"} title={"Set products rate"} />
          <Container sx={{ padding: 1 }}>
             <Box pt={6}>
                <TableContainer component={Paper}>
