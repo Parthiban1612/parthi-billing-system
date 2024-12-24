@@ -63,7 +63,7 @@ export class ComponentToPrint extends React.PureComponent {
 
   setRef = (ref) => (this.canvasEl = ref);
 
-  //...............
+  //...............d
 
   takeScreenShot = () => {
     const element = document.getElementById("divToTakeScreenshot");
