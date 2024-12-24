@@ -62,7 +62,7 @@ import garlic_udhiri from "../../images/new_images/garlic_udhiri.png";
 import keerai from "../../images/new_images/keerai.png";
 import kiyar_cuccumber from "../../images/new_images/kiyar_cuccumber.png";
 import malabar from "../../images/new_images/malabar.png";
-import mixed_vegetable from "../../images/new_images/mixed_vegetable.jpg";
+import mixed_vegetable from "../../images/new_images/mix_vegetable.jpg";
 import new_ginger from "../../images/new_images/new_ginger.png";
 import pleeld_garlic from "../../images/new_images/pleeld_garlic.png";
 import sweet_corn from "../../images/new_images/sweet_corn.png";
