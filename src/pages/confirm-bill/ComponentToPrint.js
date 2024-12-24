@@ -209,7 +209,7 @@ export class ComponentToPrint extends React.PureComponent {
     );
   }
 }
-
+//
 export const FunctionalComponentToPrint = React.forwardRef((props, ref) => {
   // eslint-disable-line max-len
   return <ComponentToPrint ref={ref} text={props.text} total={props?.totalPrice} />;
