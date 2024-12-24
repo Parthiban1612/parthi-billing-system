@@ -66,7 +66,7 @@ import mixed_vegetable from "../../images/new_images/mix_vegetable.jpg";
 import new_ginger from "../../images/new_images/new_ginger.png";
 import pleeld_garlic from "../../images/new_images/peeld_garlic.png";
 import sweet_corn from "../../images/new_images/sweet_corn.png";
-import tomato_gengalore from "../../images/new_images/tomato_gengalore.png";
+import tomato_gengalore from "../../images/new_images/tomato_bengalore.png";
 
 export const combinedArray = [
   { id: 1, image: carrot, name: "Carrot", price: 65 },
@@ -137,5 +137,5 @@ export const combinedArray = [
   { id: 66, image: new_ginger, name: "New Ginger", price: 60 },
   { id: 67, image: pleeld_garlic, name: "Peeled Garlic", price: 130 },
   { id: 68, image: sweet_corn, name: "Sweet Corn", price: 45 },
-  { id: 69, image: tomato_gengalore, name: "Tomato Gengalore", price: 25 },
+  { id: 69, image: tomato_gengalore, name: "Tomato Bengalore", price: 25 },
 ];
