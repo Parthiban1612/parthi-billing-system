@@ -3,8 +3,6 @@ import { Box, Button, Container, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { combinedArray } from "../../lib/product-list/productList";
-import { styled } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
 import CustomBack from '../../components/custom-back/CustomBack'
 import { formatRupees } from "../../lib/convertRuppee";
 

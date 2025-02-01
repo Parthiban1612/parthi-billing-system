@@ -67,6 +67,7 @@ import new_ginger from "../../images/new_images/new_ginger.png";
 import pleeld_garlic from "../../images/new_images/peeld_garlic.png";
 import sweet_corn from "../../images/new_images/sweet_corn.png";
 import tomato_gengalore from "../../images/new_images/tomato_bengalore.png";
+import yellow_capsicum from "../../images/new_images/yellow_capsicum.png";
 
 export const combinedArray = [
   { id: 1, image: carrot, name: "Carrot", price: 65 },
@@ -128,7 +129,7 @@ export const combinedArray = [
   { id: 57, image: banana_ttem, name: "Banana Stemp", price: 40 },
   { id: 58, image: banana_leaf, name: "Banana Leaf", price: 20 },
   { id: 59, image: carrot_small, name: "Carrot Small", price: 30 },
-  { id: 60, image: chines_cabbage, name: "Chinese Cabbage", price: 90 },
+  { id: 60, image: chines_cabbage, name: "Red Cabbage", price: 90 },
   { id: 61, image: garlic_udhiri, name: "Garlic Udhiri", price: 120 },
   { id: 62, image: keerai, name: "Keerai", price: 25 },
   { id: 63, image: kiyar_cuccumber, name: "Kiyar Cucumber", price: 15 },
@@ -138,4 +139,5 @@ export const combinedArray = [
   { id: 67, image: pleeld_garlic, name: "Peeled Garlic", price: 130 },
   { id: 68, image: sweet_corn, name: "Sweet Corn", price: 45 },
   { id: 69, image: tomato_gengalore, name: "Tomato Bengalore", price: 25 },
+  { id: 70, image: yellow_capsicum, name: "Yellow Capsicum", price: 50 },
 ];

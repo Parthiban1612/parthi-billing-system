@@ -462,7 +462,7 @@ export default function CreateBill() {
                   <th>#</th>
                   <th>Item</th>
                   <th>Name</th>
-                  <th>Quantity</th>
+                  <th>Qnt</th>
                   <th>Price</th>
                   <th>Total</th>
                </tr>
@@ -492,7 +492,7 @@ export default function CreateBill() {
                         />
                      </td>
                      <td>{formatRupees(item?.total)}</td>
-                     <td>
+                     <td style={{ width: " !important" }} className="p-0">
                         <Button onClick={() => handleDeleteItem(index)}><DeleteIcon /></Button>
                      </td>
                   </tr>
@@ -518,7 +518,7 @@ export default function CreateBill() {
                            <h6>
                               ₹{amount.value} - {amount.reason}
                            </h6>
-                           <Button onClick={() => handleRemovePendingAmount(index)} >
+                           <Button style={{ width: "20px" }} onClick={() => handleRemovePendingAmount(index)} >
                               <DeleteIcon />
                            </Button>
                         </li>
@@ -544,7 +544,7 @@ export default function CreateBill() {
             <hr />
          </div>
          <h6 className="fw-bold text-end">Final Total: ₹{finalTotal}</h6>
-         <div className="d-flex mb-3 gap-2">
+         <div className="d-flex mb-5 pb-3 gap-2">
             <ColorButton className="w-100" onClick={() => navigate("/confirm-bill")}>Print</ColorButton>
          </div>
       </Container>

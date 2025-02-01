@@ -178,7 +178,7 @@ export class ComponentToPrint extends React.PureComponent {
               )}
             </tbody>
           </table>
-          <div className="row me-1">
+          <div className="row me-1 pb-2">
             <p className="fw-bold text-end">Total :
               <FaIndianRupeeSign />
               {formatRupees(this?.props?.total)}</p>

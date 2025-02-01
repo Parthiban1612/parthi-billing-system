@@ -11,6 +11,7 @@ export default function CustomBack({ title, path }) {
     <Box
       position={'fixed'}
       width={'100%'}
+      zIndex={1}
     >
       <Box
         position={'relative'}
