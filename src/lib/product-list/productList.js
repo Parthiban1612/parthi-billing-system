@@ -55,7 +55,7 @@ import bajji_chilli from "../../images/bajji_chilli.png";
 import baby_corn from "../../images/new_images/baby_corn.png";
 import baby_potato from "../../images/new_images/baby_potato.png";
 import banana_ttem from "../../images/new_images/banana_ttem.png";
-import banana_leaf from "../../images/new_images/carror_big.png";
+import banana_leaf from "../../images/bananaleaf.png";
 import carrot_small from "../../images/new_images/carrot_small.png";
 import chines_cabbage from "../../images/new_images/chines_cabbage.png";
 import garlic_udhiri from "../../images/new_images/garlic_udhiri.png";
