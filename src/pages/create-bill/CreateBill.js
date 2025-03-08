@@ -231,7 +231,7 @@ import { Button, Container, TextField, MenuItem } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { styled } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
+import { orange, purple } from "@mui/material/colors";
 import { Autocomplete, Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { combinedArray } from "../../lib/product-list/productList";
@@ -241,7 +241,6 @@ import { formatRupees } from "../../lib/convertRuppee";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function CreateBill() {
@@ -362,6 +361,14 @@ export default function CreateBill() {
       },
    }));
 
+   const ResetButton = styled(Button)(({ theme }) => ({
+      color: theme.palette.getContrastText(orange[500]),
+      backgroundColor: orange[500],
+      "&:hover": {
+         backgroundColor: orange[700],
+      },
+   }));
+
    const finalTotal = totalPrice + pendingAmounts.reduce((acc, amount) => acc + amount.value, 0);
 
    return (
@@ -402,6 +409,7 @@ export default function CreateBill() {
                      <ColorButton onClick={handleAddExtraAmount} className="w-25">
                         Add
                      </ColorButton>
+
                   </div>
                </DialogContent>
                <DialogActions>
@@ -413,17 +421,26 @@ export default function CreateBill() {
          </React.Fragment>
          <div>
             <div className="d-flex my-3 gap-2">
-               <CustomizedButtons name='Set Price' path={"/all-prices"} />
+               {/* <CustomizedButtons name='Set Price' path={"/all-prices"} /> */}
+               <ResetButton className="text-light w-100" onClick={() => {
+                  localStorage.removeItem("currentBill");
+                  setPurchasedItems([]);
+                  setTotalPrice(0);
+                  setExtraAmount(0);
+                  setPendingAmounts([]);
+               }}>
+                  Reset
+               </ResetButton>
                <Button
                   disabled={productId === '' || quantity === ''}
-                  className="w-50"
+                  className="w-100"
                   variant="contained"
                   startIcon={<AddIcon />}
                   onClick={handleAddItem}
                >
                   Add Item
                </Button>
-               <Button variant="contained" onClick={handleClickOpen}>
+               <Button variant="contained" className="w-100" onClick={handleClickOpen}>
                   Amount
                </Button>
             </div>
@@ -529,23 +546,23 @@ export default function CreateBill() {
          </div>
          <div className="text-end me-2">
             <h6>
-               Total {totalPrice}
+               Total ₹{totalPrice}
             </h6>
             <h6>
-               Balance {balanceAmountTotal} <br />
+               Balance ₹{balanceAmountTotal} <br />
             </h6>
             <hr />
             <h6>
-               SubTotal {totalPrice + balanceAmountTotal}
+               SubTotal ₹{totalPrice + balanceAmountTotal}
             </h6>
             <h6>
-               Varavu {paidAmountTotal}
+               Varavu ₹{paidAmountTotal}
             </h6>
             <hr />
          </div>
          <h6 className="fw-bold text-end">Final Total: ₹{finalTotal}</h6>
          <div className="d-flex mb-3 gap-2">
-            <ColorButton className="w-100" onClick={() => navigate("/confirm-bill")}>Print</ColorButton>
+            <ColorButton className="w-100" disabled={!localStorage?.getItem("currentBill")} onClick={() => navigate("/confirm-bill")}>Print</ColorButton>
          </div>
       </Container>
    );

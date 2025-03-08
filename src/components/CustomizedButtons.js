@@ -1,16 +1,16 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import { purple } from "@mui/material/colors";
+import { green } from "@mui/material/colors";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import { useNavigate } from "react-router-dom";
 
 const ColorButton = styled(Button)(({ theme }) => ({
-   color: theme.palette.getContrastText(purple[500]),
-   backgroundColor: purple[500],
+   // color: theme.palette.getContrastText(white[500]),
+   backgroundColor: green[500],
    "&:hover": {
-      backgroundColor: purple[700],
+      backgroundColor: green[700],
    },
 }));
 
@@ -26,6 +26,7 @@ export default function CustomizedButtons({ path, type, name, fullWidth }) {
                navigate(path);
             }
          }}
+         // style={{ color: "white !important" }}
          className={`${fullWidth ? "w-100" : `w-50`}`}
          startIcon={
             type === "create" ? <ReceiptLongIcon /> : <CurrencyRupeeIcon />

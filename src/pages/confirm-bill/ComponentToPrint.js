@@ -63,7 +63,7 @@ export class ComponentToPrint extends React.PureComponent {
 
   setRef = (ref) => (this.canvasEl = ref);
 
-  //...............d
+  //...............
 
   takeScreenShot = () => {
     const element = document.getElementById("divToTakeScreenshot");
@@ -187,17 +187,17 @@ export class ComponentToPrint extends React.PureComponent {
             {balanceAmountTotal > 0 &&
               <>
                 <h6>
-                  Balance {balanceAmountTotal} <br />
+                  Balance ₹{balanceAmountTotal} <br />
                 </h6><hr className="my-2" />
                 <h6 >
-                  SubTotal {this?.props?.total + balanceAmountTotal}
+                  SubTotal ₹{this?.props?.total + balanceAmountTotal}
                 </h6>
               </>
             }
             {paidAmountTotal < 0 &&
               <>
                 <h6>
-                  Varavu {paidAmountTotal}
+                  Varavu ₹{paidAmountTotal}
                 </h6>
                 <hr className="my-2" />
               </>

@@ -67,7 +67,7 @@ export default function BottomNavigations() {
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
-            navigate(bottomNavList[newValue].pathname); // Navigate to the selected pathname
+            navigate(bottomNavList[newValue].pathname, { replace: true }); // Navigate to the selected pathname
           }}
         >
           {bottomNavList.map((data, index) => {
