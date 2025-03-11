@@ -9,6 +9,7 @@ export default function CustomBack({ title, path }) {
 
   return (
     <Box
+      zIndex={1}
       position={'fixed'}
       width={'100%'}
     >

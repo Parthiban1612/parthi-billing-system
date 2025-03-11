@@ -106,11 +106,47 @@ export class ComponentToPrint extends React.PureComponent {
           {"@page { size: landscape; }"}
         </style>
         <div className="flash" />
-        <div id="divToTakeScreenshot" className="px-2">
-          <div className="row align-items-center ms-1 pt-2">
-            <div className="col-12 mb-0">
-              <p className="mb-0 text-end me-2" style={{ opacity: .6, fontSize: "12px" }}>parthi-billing-system</p>
+        <div id="divToTakeScreenshot" className="p-2">
+          <div className="bill-container">
+            <div className="contact mb-0">
+              <div>
+                <strong style={{ color: "green" }}>MANI</strong>
+                <br />
+                <span style={{ color: "green" }}>96556 02225</span>
+                <br />
+                <span style={{ color: "green" }}>63830 34607</span>
+              </div>
+              <div className="d-flex flex-column gap-0">
+                <p className="mb-0" style={{ color: "green", fontWeight: "bold", textAlign: "center" }}>
+                  பொறையாத்தம்மன் துணை
+                </p>
+                <p className="mb-0" style={{ color: "green", fontWeight: "bold", textAlign: "center" }}>
+                  ஓம் ஆதிபராசக்தி துணை
+                </p>
+              </div>
+              <div>
+                <strong style={{ color: "green" }}>MARI</strong>
+                <br />
+                <span style={{ color: "green" }}>80723 36539</span>
+              </div>
             </div>
+            <div className="header position-relative">
+              <h1 className="mt-0">
+                <span style={{ fontFamily: "serif", left: "130px", top: "5px", transform: "rotate(-15deg)", fontSize: "15px", display: "inline-block" }}>Carrot</span> MANI
+              </h1>
+              <p className="fw-bold">மொத்தம் மற்றும் சில்லறை வியாபாரம்</p>
+              <p className="fw-bold" style={{ color: "#b30059" }}>
+                C-24,C-29, பெரியார் காய்கறி மார்கெட் கோயம்பேடு, சென்னை-92
+              </p>
+              <hr className="my-1" style={{ border: "1px solid green" }} />
+            </div>
+            <div className="details"></div>
+            <div className="handwritten"></div>
+          </div>
+          <div className="row align-items-center ms-1">
+            {/* <div className="col-12 mb-0">
+              <p className="mb-0 text-end me-2" style={{ opacity: .6, fontSize: "12px" }}>parthi-billing-system</p>
+            </div> */}
             <div className="col-8">
               <TextField
                 className="w-100"

@@ -561,7 +561,7 @@ export default function CreateBill() {
             <hr />
          </div>
          <h6 className="fw-bold text-end">Final Total: ₹{finalTotal}</h6>
-         <div className="d-flex mb-3 gap-2">
+         <div className="d-flex mb-3 pb-5 gap-2">
             <ColorButton className="w-100" disabled={!localStorage?.getItem("currentBill")} onClick={() => navigate("/confirm-bill")}>Print</ColorButton>
          </div>
       </Container>

@@ -54,7 +54,7 @@ export default function AllCurrentVegetablePrices() {
 
    return (
       <>
-         <CustomBack path={"/create-bill"} title={"Set products rate"} />
+         <CustomBack path={"/settings"} title={"Set products rate"} />
          <Container sx={{ padding: 1 }}>
             <Box pt={6}>
                <TableContainer component={Paper}>
