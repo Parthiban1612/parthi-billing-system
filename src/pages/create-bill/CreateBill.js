@@ -420,7 +420,7 @@ export default function CreateBill() {
             </Dialog>
          </React.Fragment>
          <div>
-            <div className="d-flex my-3 gap-2">
+            <div className="d-flex mb-3 gap-2">
                {/* <CustomizedButtons name='Set Price' path={"/all-prices"} /> */}
                <ResetButton className="text-light w-100" onClick={() => {
                   localStorage.removeItem("currentBill");

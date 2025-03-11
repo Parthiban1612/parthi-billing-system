@@ -8,7 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import { Box, Container } from "@mui/material";
-import CustomBack from "../components/custom-back/CustomBack";
 import { combinedArray } from "../lib/product-list/productList"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -54,7 +53,7 @@ export default function AllCurrentVegetablePrices() {
 
    return (
       <>
-         <CustomBack path={"/settings"} title={"Set products rate"} />
+         {/* <CustomBack path={"/settings"} title={"Set products rate"} /> */}
          <Container sx={{ padding: 1 }}>
             <Box pt={6}>
                <TableContainer component={Paper}>

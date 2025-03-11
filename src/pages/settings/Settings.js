@@ -31,7 +31,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-import DraftsIcon from '@mui/icons-material/Drafts';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useNavigate } from 'react-router-dom';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
@@ -44,7 +44,7 @@ export default function Settings() {
     <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
       <nav aria-label="main mailbox folders">
         <List>
-          <ListItem onClick={() => navigate("/all-prices")} className='w-100' disablePadding>
+          <ListItem onClick={() => navigate("/products-list")} className='w-100' disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <ReceiptLongIcon />
@@ -61,6 +61,14 @@ export default function Settings() {
                 <ClearAllIcon />
               </ListItemIcon>
               <ListItemText primary="Reset Price List" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => navigate("/about-us")}>
+              <ListItemIcon>
+                <ManageAccountsIcon />
+              </ListItemIcon>
+              <ListItemText primary="About us" />
             </ListItemButton>
           </ListItem>
         </List>

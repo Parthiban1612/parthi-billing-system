@@ -1,11 +1,110 @@
-import React from 'react'
-import CustomizedButtons from '../../components/CustomizedButtons'
-import { Container } from '@mui/material'
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { useEffect, useState } from "react";
+import { Box, Container } from "@mui/material";
+import { combinedArray } from "../../lib/product-list/productList"
 
-export default function ProductList() {
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
+
+export default function AllCurrentVegetablePrices() {
+  const [priceList, setPriceList] = useState([]);
+
+  useEffect(() => {
+    if (!localStorage?.getItem("combinedArray")) {
+      localStorage.setItem("combinedArray", JSON.stringify(combinedArray));
+    }
+    const storedCombinedArray = JSON.parse(
+      localStorage.getItem("combinedArray")
+    );
+    setPriceList(storedCombinedArray);
+  }, []);
+
+  const handlePriceChange = (index, newPrice) => {
+    const updatedPriceList = [...priceList];
+    updatedPriceList[index].price = newPrice;
+    setPriceList(updatedPriceList);
+    localStorage.setItem("combinedArray", JSON.stringify(updatedPriceList));
+  };
+
   return (
-    <Container sx={{ padding: 1 }}>
-      <CustomizedButtons name='Create your list' path={"/create-product-list"} />
-    </Container>
-  )
+    <>
+      <Container sx={{ padding: 1 }}>
+        <Box pb={7}>
+          <TableContainer component={Paper}>
+            <Table aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="right">Id</StyledTableCell>
+                  <StyledTableCell>Image</StyledTableCell>
+                  <StyledTableCell className="text-center">
+                    Vegetable name
+                  </StyledTableCell>
+                  <StyledTableCell align="right">Price</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {priceList?.map((row, index) => (
+                  <StyledTableRow key={index}>
+                    <StyledTableCell
+                      className="text-center"
+                      component="th"
+                      scope="row"
+                    >
+                      {row.id}
+                    </StyledTableCell>
+                    <StyledTableCell component="th" scope="row">
+                      <img
+                        style={{ width: "50px", height: "50px" }}
+                        src={row?.image}
+                        alt="" />
+                    </StyledTableCell>
+                    <StyledTableCell
+                      className="w-100 text-center"
+                      component="th"
+                      scope="row"
+                    >
+                      {row?.name}
+                    </StyledTableCell>
+                    <StyledTableCell className="w-100" align="right">
+                      <input
+                        type="number"
+                        className="w-100 text-end border-0 bg-transparent"
+                        value={row?.price} // Corrected line
+                        onChange={(e) => handlePriceChange(index, parseInt(e.target.value))}
+                      />
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
+      </Container>
+    </>
+  );
 }
