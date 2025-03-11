@@ -35,7 +35,7 @@ import garlic from "../../images/garlic.png";
 import kothavaranga from "../../images/kothavaranga.png";
 import long_beans from "../../images/long_beans.png";
 import lookkal from "../../images/lookkal.png";
-import mango from "../../images/mango.jpg";
+import mango from "../../images/mango.jpg";//ff
 import maravalli from "../../images/maravalli.webp";
 import onion from "../../images/onion.png";
 import parsley from "../../images/parsley.jpg";
@@ -52,6 +52,22 @@ import groundnut from "../../images/groundnut.png";
 import cauliflower from "../../images/cauliflower.png";
 import raw_banana from "../../images/raw_banana.png";
 import bajji_chilli from "../../images/bajji_chilli.png";
+import baby_corn from "../../images/new_images/baby_corn.png";
+import baby_potato from "../../images/new_images/baby_potato.png";
+import banana_ttem from "../../images/new_images/banana_ttem.png";
+import banana_leaf from "../../images/bananaleaf.png";
+import carrot_small from "../../images/new_images/carrot_small.png";
+import chines_cabbage from "../../images/new_images/chines_cabbage.png";
+import garlic_udhiri from "../../images/new_images/garlic_udhiri.png";
+import keerai from "../../images/new_images/keerai.png";
+import kiyar_cuccumber from "../../images/new_images/kiyar_cuccumber.png";
+import malabar from "../../images/new_images/malabar.png";
+import mixed_vegetable from "../../images/new_images/mix_vegetable.jpg";
+import new_ginger from "../../images/new_images/new_ginger.png";
+import pleeld_garlic from "../../images/new_images/peeld_garlic.png";
+import sweet_corn from "../../images/new_images/sweet_corn.png";
+import tomato_gengalore from "../../images/new_images/tomato_bengalore.png";
+import yellow_capsicum from "../../images/new_images/yellow_capsicum.png";
 
 export const combinedArray = [
   { id: 1, image: carrot, name: "Carrot", price: 65 },
@@ -108,4 +124,20 @@ export const combinedArray = [
   { id: 52, image: cauliflower, name: "Cauliflower", price: 120 },
   { id: 53, image: raw_banana, name: "Raw banana", price: 8 },
   { id: 54, image: bajji_chilli, name: "Bajji chilly", price: 80 },
+  { id: 55, image: baby_corn, name: "Baby Corn", price: 150 },
+  { id: 56, image: baby_potato, name: "Baby Potato", price: 50 },
+  { id: 57, image: banana_ttem, name: "Banana Stemp", price: 40 },
+  { id: 58, image: banana_leaf, name: "Banana Leaf", price: 20 },
+  { id: 59, image: carrot_small, name: "Carrot Small", price: 30 },
+  { id: 60, image: chines_cabbage, name: "Red Cabbage", price: 90 },
+  { id: 61, image: garlic_udhiri, name: "Garlic Udhiri", price: 120 },
+  { id: 62, image: keerai, name: "Keerai", price: 25 },
+  { id: 63, image: kiyar_cuccumber, name: "Kiyar Cucumber", price: 15 },
+  { id: 64, image: malabar, name: "Malabar", price: 40 },
+  { id: 65, image: mixed_vegetable, name: "Mixed Vegetable", price: 100 },
+  { id: 66, image: new_ginger, name: "New Ginger", price: 60 },
+  { id: 67, image: pleeld_garlic, name: "Peeled Garlic", price: 130 },
+  { id: 68, image: sweet_corn, name: "Sweet Corn", price: 45 },
+  { id: 69, image: tomato_gengalore, name: "Tomato Bengalore", price: 25 },
+  { id: 70, image: yellow_capsicum, name: "Yellow Capsicum", price: 50 },
 ];
