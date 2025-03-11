@@ -106,7 +106,7 @@ export class ComponentToPrint extends React.PureComponent {
           {"@page { size: landscape; }"}
         </style>
         <div className="flash" />
-        <div id="divToTakeScreenshot" className="p-2">
+        <div id="divToTakeScreenshot" style={{ border: "1px solid green", borderRadius: "5px" }} className="p-2 m-1">
           <div className="bill-container">
             <div className="contact mb-0">
               <div>
