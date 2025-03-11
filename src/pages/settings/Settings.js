@@ -55,7 +55,9 @@ export default function Settings() {
               </ListItemIcon>
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
+          <ListItem disablePadding
+            onClick={() => localStorage?.clear()}
+          >
             <ListItemButton>
               <ListItemIcon>
                 <ClearAllIcon />
