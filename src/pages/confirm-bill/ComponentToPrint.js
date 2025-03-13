@@ -106,142 +106,144 @@ export class ComponentToPrint extends React.PureComponent {
           {"@page { size: landscape; }"}
         </style>
         <div className="flash" />
-        <div id="divToTakeScreenshot" style={{ border: "1px solid green", borderRadius: "5px" }} className="p-2 m-1">
-          <div className="bill-container">
-            <div className="contact mb-0">
-              <div>
-                <strong style={{ color: "green" }}>MANI</strong>
-                <br />
-                <span style={{ color: "green" }}>96556 02225</span>
-                <br />
-                <span style={{ color: "green" }}>63830 34607</span>
+        <div id="divToTakeScreenshot" className="py-2">
+          <div className="m-2" style={{ border: "1px solid green", borderRadius: "3px" }}>
+            <div className="bill-container px-2">
+              <div className="contact mb-0">
+                <div>
+                  <strong style={{ color: "green" }}>MANI</strong>
+                  <br />
+                  <span style={{ color: "green" }}>96556 02225</span>
+                  <br />
+                  <span style={{ color: "green" }}>63830 34607</span>
+                </div>
+                <div className="d-flex flex-column gap-0">
+                  <p className="mb-0" style={{ color: "green", fontSize: "10px", fontWeight: "bold", textAlign: "center" }}>
+                    பொறையாத்தம்மன் துணை
+                  </p>
+                  <p className="mb-0" style={{ color: "green", fontSize: "10px", fontWeight: "bold", textAlign: "center" }}>
+                    ஓம் ஆதிபராசக்தி துணை
+                  </p>
+                </div>
+                <div>
+                  <strong style={{ color: "green" }}>MARI</strong>
+                  <br />
+                  <span style={{ color: "green" }}>80723 36539</span>
+                </div>
               </div>
-              <div className="d-flex flex-column gap-0">
-                <p className="mb-0" style={{ color: "green", fontWeight: "bold", textAlign: "center" }}>
-                  பொறையாத்தம்மன் துணை
+              <div className="header position-relative">
+                <h1 className="mt-0">
+                  <span style={{ fontFamily: "serif", left: "130px", top: "5px", transform: "rotate(-15deg)", fontSize: "15px", display: "inline-block" }}>Carrot</span> MANI
+                </h1>
+                <p className="fw-bold">மொத்தம் மற்றும் சில்லறை வியாபாரம்</p>
+                <p className="fw-bold" style={{ color: "#b30059" }}>
+                  C-24,C-29, பெரியார் காய்கறி மார்கெட் கோயம்பேடு, சென்னை-92
                 </p>
-                <p className="mb-0" style={{ color: "green", fontWeight: "bold", textAlign: "center" }}>
-                  ஓம் ஆதிபராசக்தி துணை
-                </p>
+                <hr className="my-1" style={{ border: "1px solid green" }} />
               </div>
-              <div>
-                <strong style={{ color: "green" }}>MARI</strong>
-                <br />
-                <span style={{ color: "green" }}>80723 36539</span>
-              </div>
+              <div className="details"></div>
+              <div className="handwritten"></div>
             </div>
-            <div className="header position-relative">
-              <h1 className="mt-0">
-                <span style={{ fontFamily: "serif", left: "130px", top: "5px", transform: "rotate(-15deg)", fontSize: "15px", display: "inline-block" }}>Carrot</span> MANI
-              </h1>
-              <p className="fw-bold">மொத்தம் மற்றும் சில்லறை வியாபாரம்</p>
-              <p className="fw-bold" style={{ color: "#b30059" }}>
-                C-24,C-29, பெரியார் காய்கறி மார்கெட் கோயம்பேடு, சென்னை-92
-              </p>
-              <hr className="my-1" style={{ border: "1px solid green" }} />
-            </div>
-            <div className="details"></div>
-            <div className="handwritten"></div>
-          </div>
-          <div className="row align-items-center ms-1">
-            {/* <div className="col-12 mb-0">
+            <div className="row align-items-center ms-1">
+              {/* <div className="col-12 mb-0">
               <p className="mb-0 text-end me-2" style={{ opacity: .6, fontSize: "12px" }}>parthi-billing-system</p>
             </div> */}
-            <div className="col-8">
-              <TextField
-                className="w-100"
-                id="standard-basic"
-                variant="standard"
-                label="Customer name"
-                onChange={(e) => this.setState({ customerName: e.target.value })}
-              />
-            </div>
-            <div className="col-4 ps-0">
-              <div className="d-flex align-center gap-2 mt-3">
-                {/* <FaRegCalendarAlt color="#9c27b0" size={33} /> */}
-                <DatePicker
-                  format="DD-MM-YYYY"
-                  className="w-100 border-0 fw-bold"
-                  popperPlacement="top-start" // or "top-end", "bottom-start", "bottom-end", etc.
-                  selected={this.state.date}
-                  dateFormat="dd-MM-yyyy"
-                  onChange={(date) => this.setState({ date: date })} />
+              <div className="col-8">
+                <TextField
+                  className="w-100"
+                  id="standard-basic"
+                  variant="standard"
+                  label="Customer name"
+                  onChange={(e) => this.setState({ customerName: e.target.value })}
+                />
+              </div>
+              <div className="col-4 ps-0">
+                <div className="d-flex align-center gap-2 mt-3">
+                  {/* <FaRegCalendarAlt color="#9c27b0" size={33} /> */}
+                  <DatePicker
+                    format="DD-MM-YYYY"
+                    className="w-100 border-0 fw-bold"
+                    popperPlacement="top-start" // or "top-end", "bottom-start", "bottom-end", etc.
+                    selected={this.state.date}
+                    dateFormat="dd-MM-yyyy"
+                    onChange={(date) => this.setState({ date: date })} />
+                </div>
               </div>
             </div>
-          </div>
-          <table className="testClass table table-striped text-center mt-2">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Item</th>
-                <th scope="col">Name</th>
-                <th scope="col">Qnt</th>
-                <th scope="col">Price</th>
-                <th scope="col">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="d-none">
-                <td>
-                  <canvas height="100" ref={this.setRef} width="200">
-                    Your browser does not support the HTML5 canvas tag.
-                  </canvas>
-                </td>
-              </tr>
-              {purchasedItems && (
+            <table className="testClass table table-striped text-center mt-2">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Qnt</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="d-none">
+                  <td>
+                    <canvas height="100" ref={this.setRef} width="200">
+                      Your browser does not support the HTML5 canvas tag.
+                    </canvas>
+                  </td>
+                </tr>
+                {purchasedItems && (
+                  <>
+                    {purchasedItems?.map((item, index) => (
+                      <tr key={index} className="table-row">
+                        <th scope="row">{index + 1}</th>
+                        <td className="px-0">
+                          <img
+                            style={{ width: "50px", height: "50px" }}
+                            src={item.image}
+                            alt={item.name}
+                          />
+                        </td>
+                        <td className="px-0">{item.name}</td>
+                        <td className="px-0">
+                          {item.quantity}
+                        </td>
+                        <td className="px-0">
+                          {formatRupees(item.price)}
+                        </td>
+                        <td className="px-0">{formatRupees(item?.total)}</td>
+                      </tr>
+                    ))}
+                  </>
+                )}
+              </tbody>
+            </table>
+            <div className="row me-1">
+              <p className="fw-bold text-end">Total :
+                <FaIndianRupeeSign />
+                {formatRupees(this?.props?.total)}</p>
+            </div>
+            <div className="text-end me-2 d-flex flex-column justify-content-end">
+              {balanceAmountTotal > 0 &&
                 <>
-                  {purchasedItems?.map((item, index) => (
-                    <tr key={index} className="table-row">
-                      <th scope="row">{index + 1}</th>
-                      <td className="px-0">
-                        <img
-                          style={{ width: "50px", height: "50px" }}
-                          src={item.image}
-                          alt={item.name}
-                        />
-                      </td>
-                      <td className="px-0">{item.name}</td>
-                      <td className="px-0">
-                        {item.quantity}
-                      </td>
-                      <td className="px-0">
-                        {formatRupees(item.price)}
-                      </td>
-                      <td className="px-0">{formatRupees(item?.total)}</td>
-                    </tr>
-                  ))}
+                  <h6>
+                    Balance ₹{balanceAmountTotal} <br />
+                  </h6><hr className="my-2" />
+                  <h6 >
+                    SubTotal ₹{this?.props?.total + balanceAmountTotal}
+                  </h6>
                 </>
-              )}
-            </tbody>
-          </table>
-          <div className="row me-1">
-            <p className="fw-bold text-end">Total :
-              <FaIndianRupeeSign />
-              {formatRupees(this?.props?.total)}</p>
-          </div>
-          <div className="text-end me-2 d-flex flex-column justify-content-end">
-            {balanceAmountTotal > 0 &&
-              <>
-                <h6>
-                  Balance ₹{balanceAmountTotal} <br />
-                </h6><hr className="my-2" />
-                <h6 >
-                  SubTotal ₹{this?.props?.total + balanceAmountTotal}
-                </h6>
-              </>
-            }
+              }
+              {paidAmountTotal < 0 &&
+                <>
+                  <h6>
+                    Varavu ₹{paidAmountTotal}
+                  </h6>
+                  <hr className="my-2" />
+                </>
+              }
+            </div>
             {paidAmountTotal < 0 &&
-              <>
-                <h6>
-                  Varavu ₹{paidAmountTotal}
-                </h6>
-                <hr className="my-2" />
-              </>
+              <h6 className="fw-bold text-end">Final Total: ₹{this?.props?.total + balanceAmountTotal + paidAmountTotal}</h6>
             }
           </div>
-          {paidAmountTotal < 0 &&
-            <h6 className="fw-bold text-end">Final Total: ₹{this?.props?.total + balanceAmountTotal + paidAmountTotal}</h6>
-          }
         </div>
       </div>
     );
