@@ -111,11 +111,11 @@ export class ComponentToPrint extends React.PureComponent {
             <div className="bill-container px-2">
               <div className="contact mb-0">
                 <div>
-                  <strong style={{ color: "green" }}>MANI</strong>
+                  <strong style={{ color: "green" }}>Prop. MANI</strong>
                   <br />
-                  <span style={{ color: "green" }}>96556 02225</span>
+                  <span style={{ color: "green", fontSize: "12px" }}>96556 02225</span>
                   <br />
-                  <span style={{ color: "green" }}>63830 34607</span>
+                  <span style={{ color: "green", fontSize: "12px" }}>63830 34607</span>
                 </div>
                 <div className="d-flex flex-column gap-0">
                   <p className="mb-0" style={{ color: "green", fontSize: "10px", fontWeight: "bold", textAlign: "center" }}>
@@ -128,15 +128,15 @@ export class ComponentToPrint extends React.PureComponent {
                 <div>
                   <strong style={{ color: "green" }}>MARI</strong>
                   <br />
-                  <span style={{ color: "green" }}>80723 36539</span>
+                  <span style={{ color: "green", fontSize: "12px" }}>80723 36539</span>
                 </div>
               </div>
               <div className="header position-relative">
                 <h1 className="mt-0">
-                  <span style={{ fontFamily: "serif", left: "130px", top: "5px", transform: "rotate(-15deg)", fontSize: "15px", display: "inline-block" }}>Carrot</span> MANI
+                  <span style={{ left: "130px", top: "5px", transform: "rotate(-15deg)", fontSize: "15px", display: "inline-block" }}>Carrot</span> MANI
                 </h1>
-                <p className="fw-bold">மொத்தம் மற்றும் சில்லறை வியாபாரம்</p>
-                <p className="fw-bold" style={{ color: "#b30059" }}>
+                <p className="noticia-text-regular fs-13">மொத்தம் மற்றும் சில்லறை வியாபாரம்</p>
+                <p className="noticia-text-regular fs-13" style={{ color: "#b30059" }}>
                   C-24,C-29, பெரியார் காய்கறி மார்கெட் கோயம்பேடு, சென்னை-92
                 </p>
                 <hr className="my-1" style={{ border: "1px solid green" }} />
@@ -150,6 +150,7 @@ export class ComponentToPrint extends React.PureComponent {
             </div> */}
               <div className="col-8">
                 <TextField
+                  style={{ fontSize: "14px" }}
                   className="w-100"
                   id="standard-basic"
                   variant="standard"
@@ -162,7 +163,7 @@ export class ComponentToPrint extends React.PureComponent {
                   {/* <FaRegCalendarAlt color="#9c27b0" size={33} /> */}
                   <DatePicker
                     format="DD-MM-YYYY"
-                    className="w-100 border-0 fw-bold"
+                    className="w-100 border-0 fw-bold fs-14"
                     popperPlacement="top-start" // or "top-end", "bottom-start", "bottom-end", etc.
                     selected={this.state.date}
                     dateFormat="dd-MM-yyyy"
@@ -194,21 +195,21 @@ export class ComponentToPrint extends React.PureComponent {
                     {purchasedItems?.map((item, index) => (
                       <tr key={index} className="table-row">
                         <th scope="row">{index + 1}</th>
-                        <td className="px-0">
+                        <td className="px-0 poppins-light">
                           <img
-                            style={{ width: "50px", height: "50px" }}
+                            style={{ width: "35px", height: "35px" }}
                             src={item.image}
                             alt={item.name}
                           />
                         </td>
-                        <td className="px-0">{item.name}</td>
-                        <td className="px-0">
+                        <td className="px-0 poppins-light text-start ps-2">{item.name}</td>
+                        <td className="px-0 poppins-light">
                           {item.quantity}
                         </td>
-                        <td className="px-0">
+                        <td className="px-0 poppins-light">
                           {formatRupees(item.price)}
                         </td>
-                        <td className="px-0">{formatRupees(item?.total)}</td>
+                        <td className="px-0 poppins-light">{formatRupees(item?.total)}</td>
                       </tr>
                     ))}
                   </>
@@ -216,32 +217,32 @@ export class ComponentToPrint extends React.PureComponent {
               </tbody>
             </table>
             <div className="row me-1">
-              <p className="fw-bold text-end">Total :
+              <p className="fw-bold text-end fs-14">Total :
                 <FaIndianRupeeSign />
                 {formatRupees(this?.props?.total)}</p>
             </div>
             <div className="text-end me-2 d-flex flex-column justify-content-end">
               {balanceAmountTotal > 0 &&
                 <>
-                  <h6>
+                  <p className="mb-0 fs-14">
                     Balance ₹{balanceAmountTotal} <br />
-                  </h6><hr className="my-2" />
-                  <h6 >
+                  </p><hr className="my-2" />
+                  <p className="mb-0 fs-14">
                     SubTotal ₹{this?.props?.total + balanceAmountTotal}
-                  </h6>
+                  </p>
                 </>
               }
               {paidAmountTotal < 0 &&
                 <>
-                  <h6>
-                    Varavu ₹{paidAmountTotal}
-                  </h6>
+                  <p className="mb-0 fs-14">
+                    Cash ₹{paidAmountTotal}
+                  </p>
                   <hr className="my-2" />
                 </>
               }
             </div>
             {paidAmountTotal < 0 &&
-              <h6 className="fw-bold text-end">Final Total: ₹{this?.props?.total + balanceAmountTotal + paidAmountTotal}</h6>
+              <p className="fw-bold text-end fs-14 pe-2">Final Total: ₹{this?.props?.total + balanceAmountTotal + paidAmountTotal}</p>
             }
           </div>
         </div>

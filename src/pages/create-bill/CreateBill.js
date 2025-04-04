@@ -339,7 +339,7 @@ export default function CreateBill() {
          let newExtraAmount;
          if (reason === "Balance") {
             newExtraAmount = { value: parseFloat(extraAmount), reason };
-         } else if (reason === "Varavu") {
+         } else if (reason === "Cash") {
             newExtraAmount = { value: -parseFloat(extraAmount), reason };
          }
          setPendingAmounts((prev) => [...prev, newExtraAmount]);
@@ -354,6 +354,7 @@ export default function CreateBill() {
    };
 
    const ColorButton = styled(Button)(({ theme }) => ({
+      fontSize: 13,
       color: theme.palette.getContrastText(purple[500]),
       backgroundColor: purple[500],
       "&:hover": {
@@ -362,6 +363,7 @@ export default function CreateBill() {
    }));
 
    const ResetButton = styled(Button)(({ theme }) => ({
+      fontSize: 13,
       color: theme.palette.getContrastText(orange[500]),
       backgroundColor: orange[500],
       "&:hover": {
@@ -382,12 +384,13 @@ export default function CreateBill() {
             >
                <DialogTitle id="alert-dialog-title">
                   <h6 className="fw-bold">
-                     Add balance and Less Varavu
+                     Add balance and Less Cash
                   </h6>
                </DialogTitle>
                <DialogContent className="px-2 pt-2 pb-0">
                   <div className="d-flex mb-3 gap-2 mx-2">
                      <TextField
+                        size="small"
                         className="w-50"
                         label="Additional Amount"
                         variant="outlined"
@@ -396,6 +399,7 @@ export default function CreateBill() {
                         type="number"
                      />
                      <TextField
+                        size="small"
                         className="w-50"
                         label="Reason"
                         variant="outlined"
@@ -404,7 +408,7 @@ export default function CreateBill() {
                         onChange={(e) => setReason(e.target.value)}
                      >
                         <MenuItem value="Balance">Balance</MenuItem>
-                        <MenuItem value="Varavu">Varavu</MenuItem>
+                        <MenuItem value="Cash">Cash</MenuItem>
                      </TextField>
                      <ColorButton onClick={handleAddExtraAmount} className="w-25">
                         Add
@@ -432,20 +436,23 @@ export default function CreateBill() {
                   Reset
                </ResetButton>
                <Button
+                  style={{ fontSize: "13px !important" }}
                   disabled={productId === '' || quantity === ''}
                   className="w-100"
                   variant="contained"
-                  startIcon={<AddIcon />}
                   onClick={handleAddItem}
                >
                   Add Item
                </Button>
-               <Button variant="contained" className="w-100" onClick={handleClickOpen}>
+               <Button
+                  style={{ fontSize: "13px !important" }}
+                  variant="contained" className="w-100" onClick={handleClickOpen}>
                   Amount
                </Button>
             </div>
             <div className="d-flex gap-2">
                <Autocomplete
+                  size="small"
                   fullWidth
                   options={combinedArray}
                   getOptionLabel={(option) => option?.name || ''}
@@ -464,6 +471,7 @@ export default function CreateBill() {
                   )}
                />
                <TextField
+                  size="small"
                   className="w-50"
                   label="Quantity"
                   variant="outlined"
@@ -479,7 +487,7 @@ export default function CreateBill() {
                   <th>#</th>
                   <th>Item</th>
                   <th>Name</th>
-                  <th>Quantity</th>
+                  <th>Qnt</th>
                   <th>Price</th>
                   <th>Total</th>
                </tr>
@@ -489,9 +497,9 @@ export default function CreateBill() {
                   <tr key={index}>
                      <th>{index + 1}</th>
                      <td>
-                        <img style={{ width: "50px", height: "50px" }} src={item.image} alt={item.name} />
+                        <img style={{ width: "35px", height: "35px" }} src={item.image} alt={item.name} />
                      </td>
-                     <td>{item.name}</td>
+                     <td className="text-start ps-2">{item.name}</td>
                      <td>
                         <input
                            className="text-center border-0 bg-transparent w-100"
@@ -509,14 +517,14 @@ export default function CreateBill() {
                         />
                      </td>
                      <td>{formatRupees(item?.total)}</td>
-                     <td>
-                        <Button onClick={() => handleDeleteItem(index)}><DeleteIcon /></Button>
+                     <td className="px-0">
+                        <Button className="p-0" onClick={() => handleDeleteItem(index)}><DeleteIcon /></Button>
                      </td>
                   </tr>
                ))}
             </tbody>
          </table>
-         <h6 className="fw-bold float-end me-2">Total of the Bill: ₹{totalPrice}</h6>
+         <h6 className="fw-bold float-end me-2 fs-14">Total of the Bill: ₹{totalPrice}</h6>
          <div className="mt-5">
             {pendingAmounts.length > 0 && (
                <div className="mb-3">
@@ -532,9 +540,9 @@ export default function CreateBill() {
                               borderRadius: "4px",
                            }}
                         >
-                           <h6>
+                           <p className="fs-13">
                               ₹{amount.value} - {amount.reason}
-                           </h6>
+                           </p>
                            <Button onClick={() => handleRemovePendingAmount(index)} >
                               <DeleteIcon />
                            </Button>
@@ -545,22 +553,22 @@ export default function CreateBill() {
             )}
          </div>
          <div className="text-end me-2">
-            <h6>
+            <p className="mb-0 fs-13">
                Total ₹{totalPrice}
-            </h6>
-            <h6>
+            </p>
+            <p className="mb-0 fs-13">
                Balance ₹{balanceAmountTotal} <br />
-            </h6>
+            </p>
             <hr />
-            <h6>
+            <p className="mb-0 fs-13">
                SubTotal ₹{totalPrice + balanceAmountTotal}
-            </h6>
-            <h6>
-               Varavu ₹{paidAmountTotal}
-            </h6>
+            </p>
+            <p className="mb-0 fs-13">
+               Cash ₹{paidAmountTotal}
+            </p>
             <hr />
          </div>
-         <h6 className="fw-bold text-end">Final Total: ₹{finalTotal}</h6>
+         <p className="text-end fs-14 fw-bold">Final Total: ₹{finalTotal}</p>
          <div className="d-flex mb-3 pb-5 gap-2">
             <ColorButton className="w-100" disabled={!localStorage?.getItem("currentBill")} onClick={() => navigate("/confirm-bill")}>Print</ColorButton>
          </div>

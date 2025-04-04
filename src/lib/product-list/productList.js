@@ -106,7 +106,7 @@ export const combinedArray = [
   { id: 34, image: garlic, name: "Garlic", price: 200 },
   { id: 35, image: kothavaranga, name: "Cluster beans", price: 60 },
   { id: 36, image: long_beans, name: "Long beans", price: 55 },
-  { id: 37, image: lookkal, name: "Mookkai", price: 30 },
+  { id: 37, image: lookkal, name: "Lookkal", price: 30 },
   { id: 38, image: mango, name: "Mango", price: 80 },
   { id: 39, image: maravalli, name: "Maravalli", price: 45 },
   { id: 40, image: onion, name: "Onion", price: 30 },
