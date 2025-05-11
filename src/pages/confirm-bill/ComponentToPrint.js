@@ -128,12 +128,12 @@ export class ComponentToPrint extends React.PureComponent {
                 <div>
                   <strong style={{ color: "green" }}>MARI</strong>
                   <br />
-                  <span style={{ color: "green", fontSize: "12px" }}>80723 36539</span>
+                  <span style={{ color: "green", fontSize: "12px" }}>93635 87233</span>
                 </div>
               </div>
               <div className="header position-relative">
                 <h1 className="mt-0">
-                  <span style={{ left: "130px", top: "5px", transform: "rotate(-15deg)", fontSize: "15px", display: "inline-block" }}>Carrot</span> MANI
+                  <span>Carrot</span> MANI Traders
                 </h1>
                 <p className="noticia-text-regular fs-13">மொத்தம் மற்றும் சில்லறை வியாபாரம்</p>
                 <p className="noticia-text-regular fs-13" style={{ color: "#b30059" }}>

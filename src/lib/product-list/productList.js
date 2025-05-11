@@ -68,6 +68,17 @@ import pleeld_garlic from "../../images/new_images/peeld_garlic.png";
 import sweet_corn from "../../images/new_images/sweet_corn.png";
 import tomato_gengalore from "../../images/new_images/tomato_bengalore.png";
 import yellow_capsicum from "../../images/new_images/yellow_capsicum.png";
+import yellow_zucchini from "../../images/new_images/yellow_zuccunni.png";
+import green_zucchini from "../../images/new_images/green_zucchini.png";
+import palak from "../../images/new_images/palak_.png";
+import ice_cabbage from "../../images/new_images/ice_cabbage.png";
+import grill_lettuce from "../../images/new_images/grill_lettuce.png";
+import ginger_small from "../../images/new_images/ginger_small.png";
+import bazil from "../../images/new_images/bazil.png";
+import jackfruit from "../../images/new_images/jackfruit.png";
+import cherry_tomato from "../../images/new_images/cherry_tomato.png";
+import chilly_bullet from "../../images/new_images/chilly_bullet.png";
+import leeks from "../../images/new_images/babyleeks.png";
 
 export const combinedArray = [
   { id: 1, image: carrot, name: "Carrot", price: 65 },
@@ -106,7 +117,7 @@ export const combinedArray = [
   { id: 34, image: garlic, name: "Garlic", price: 200 },
   { id: 35, image: kothavaranga, name: "Cluster beans", price: 60 },
   { id: 36, image: long_beans, name: "Long beans", price: 55 },
-  { id: 37, image: lookkal, name: "Lookkal", price: 30 },
+  { id: 37, image: lookkal, name: "Nookal", price: 30 },
   { id: 38, image: mango, name: "Mango", price: 80 },
   { id: 39, image: maravalli, name: "Maravalli", price: 45 },
   { id: 40, image: onion, name: "Onion", price: 30 },
@@ -140,4 +151,15 @@ export const combinedArray = [
   { id: 68, image: sweet_corn, name: "Sweet Corn", price: 45 },
   { id: 69, image: tomato_gengalore, name: "Tomato Bengalore", price: 25 },
   { id: 70, image: yellow_capsicum, name: "Yellow Capsicum", price: 50 },
+  { id: 71, image: yellow_zucchini, name: "Yellow Zucchini", price: 45 },
+  { id: 72, image: green_zucchini, name: "Green Zucchini", price: 50 },
+  { id: 73, image: palak, name: "Palak", price: 30 },
+  { id: 74, image: ice_cabbage, name: "Ice Cabbage", price: 55 },
+  { id: 75, image: grill_lettuce, name: "Grill Lettuce", price: 65 },
+  { id: 76, image: ginger_small, name: "Ginger Small", price: 40 },
+  { id: 77, image: bazil, name: "Bazil", price: 25 },
+  { id: 78, image: jackfruit, name: "Jackfruit", price: 70 },
+  { id: 79, image: cherry_tomato, name: "Cherry Tomato", price: 35 },
+  { id: 80, image: chilly_bullet, name: "Chilly Bullet", price: 60 },
+  { id: 81, image: leeks, name: "Leeks", price: 50 },
 ];

@@ -10,6 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 import BottomNavigation from "./components/bottom-nav/BottomNavigation"
 import App from './App';
 import "react-datepicker/dist/react-datepicker.css";
+import { ToastContainer } from 'react-toastify';
 
 const { store, persistor } = makeStore();
 
@@ -20,6 +21,7 @@ root.render(
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <App />
+                <ToastContainer />
                 <BottomNavigation />
             </PersistGate>
         </Provider >
