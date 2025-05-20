@@ -82,11 +82,11 @@ import leeks from "../../images/new_images/babyleeks.png";
 
 export const combinedArray = [
   { id: 1, image: carrot, name: "Carrot", price: 65 },
-  { id: 2, image: beat, name: "Beatroot", price: 35 },
+  { id: 2, image: beat, name: "Beetroot", price: 35 },
   { id: 3, image: drum_stick, name: "Drum stick", price: 35 },
   { id: 4, image: raddish, name: "Raddish", price: 40 },
   { id: 5, image: ginger, name: "Ginger", price: 130 },
-  { id: 6, image: avara, name: "Avara", price: 50 },
+  { id: 6, image: avara, name: "Flat Beans", price: 50 },
   { id: 7, image: beans, name: "Beans", price: 50 },
   { id: 8, image: capsi, name: "Capsicum", price: 45 },
   { id: 9, image: sambar, name: "Sambar", price: 45 },

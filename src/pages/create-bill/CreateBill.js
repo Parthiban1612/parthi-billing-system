@@ -1,247 +1,22 @@
-// import React, { useEffect, useState } from "react";
-import CustomizedButtons from "../../components/CustomizedButtons";
-// import { Button, Container, TextField } from "@mui/material";
-// import AddIcon from "@mui/icons-material/Add";
-// import DeleteIcon from "@mui/icons-material/Delete";
-// import { combinedArray } from "../../lib/product-list/productList";
-// import { styled } from "@mui/material/styles";
-// import { purple } from "@mui/material/colors";
-// import { useNavigate } from "react-router-dom";
-// import { formatRupees } from "../../lib/convertRuppee";
-// import { Autocomplete, Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
-// import { FaIndianRupeeSign } from "react-icons/fa6";
-
-// export default function CreateBill() {
-//    const [priceList, setPriceList] = useState([]);
-//    const [purchasedItems, setPurchasedItems] = useState([]);
-//    const [totalPrice, setTotalPrice] = useState(0);
-//    const navigate = useNavigate();
-//    const [productId, setProductId] = useState('');
-//    const [quantity, setQuantity] = useState('');
-
-
-
-//    useEffect(() => {
-//       if (!localStorage?.getItem("combinedArray")) {
-//          localStorage.setItem("combinedArray", JSON.stringify(combinedArray));
-//       }
-//       const storedCombinedArray = JSON.parse(localStorage.getItem("combinedArray"));
-//       setPriceList(storedCombinedArray);
-//    }, []);
-
-//    useEffect(() => {
-//       const storedCombinedArray = JSON.parse(localStorage.getItem("currentBill"));
-//       setPurchasedItems(storedCombinedArray || []);
-//    }, []);
-
-//    const handleGetProduct = (productId, quantity) => {
-//       const selectedItem = priceList.find((item) => item.id === productId);
-//       const newItem = { ...selectedItem, quantity: parseInt(quantity), total: quantity * selectedItem?.price };
-//       setPurchasedItems((prevItems) => [...(prevItems || []), newItem]);
-//       setQuantity(null);
-//       setProductId(null);
-//    };
-
-//    useEffect(() => {
-//       if (Array.isArray(purchasedItems) && purchasedItems.length > 0) {
-//          const total = purchasedItems.reduce(
-//             (acc, item) => acc + item.price * item.quantity,
-//             0
-//          );
-//          setTotalPrice(total);
-//          localStorage.setItem("currentBill", JSON.stringify(purchasedItems));
-//       }
-//    }, [purchasedItems]);
-
-//    const handleAddItem = () => {
-//       if (!isNaN(productId) && !isNaN(quantity)) {
-//          handleGetProduct(productId, quantity);
-//          setProductId(null);
-//          setQuantity('');
-//       }
-//    };
-
-//    const handleQuantityChange = (index, quantity) => {
-//       const updatedItems = [...purchasedItems];
-//       updatedItems[index].quantity = parseFloat(quantity); // Use parseFloat to allow .5 values
-//       updatedItems[index].total = purchasedItems[index]?.price * quantity; // Use parseFloat to allow .5 values
-//       setPurchasedItems(updatedItems);
-//       localStorage.setItem("currentBill", JSON.stringify(updatedItems));
-//    };
-
-//    const handlePriceChange = (index, price) => {
-//       const updatedItems = [...purchasedItems];
-//       updatedItems[index].price = parseFloat(price); // Use parseFloat to allow .5 values
-//       updatedItems[index].total = purchasedItems[index]?.quantity * price; // Use parseFloat to allow .5 values
-//       setPurchasedItems(updatedItems);
-//       localStorage.setItem("currentBill", JSON.stringify(updatedItems));
-//    };
-
-//    const handleDeleteItem = (id) => {
-//       const updatedItems = purchasedItems.filter((_, _index) => _index !== id);
-//       setPurchasedItems(updatedItems);
-//       localStorage.setItem("currentBill", JSON.stringify(updatedItems));
-//    };
-
-//    const ColorButton = styled(Button)(({ theme }) => ({
-//       color: theme.palette.getContrastText(purple[500]),
-//       backgroundColor: purple[500],
-//       "&:hover": {
-//          backgroundColor: purple[700],
-//       },
-//    }));
-
-//    return (
-//       <Container sx={{ padding: 1 }}>
-//          <div>
-//             <div className="d-flex my-3 gap-1">
-//                <CustomizedButtons name='Set Price' path={"/all-prices"} />
-//                <Button
-//                   disabled={productId === '' || quantity === ''}
-//                   className="w-50"
-//                   variant="contained"
-//                   startIcon={<AddIcon />}
-//                   onClick={handleAddItem}
-//                >
-//                   Add
-//                </Button>
-//             </div>
-//             <div className="d-flex gap-2">
-//                <Autocomplete
-//                   fullWidth
-//                   id="demo-simple-autocomplete"
-//                   options={combinedArray}
-//                   getOptionLabel={(option) => option?.name || ''}
-//                   value={combinedArray.find((option) => option?.id === productId) || null}
-//                   onChange={(event, newValue) => {
-//                      setProductId(newValue?.id);
-//                   }}
-//                   renderInput={(params) => (
-//                      <TextField
-//                         {...params}
-//                         label="Product"
-//                         variant="outlined"
-//                      />
-//                   )}
-//                   renderOption={(props, option) => (
-//                      <ListItem {...props} key={option.id}>
-//                         <ListItemAvatar>
-//                            <Avatar src={option?.image} />
-//                         </ListItemAvatar>
-//                         <ListItemText primary={option?.name} />
-//                      </ListItem>
-//                   )}
-//                />
-//                <TextField
-//                   className="w-50"
-//                   label="Quantity"
-//                   variant="outlined"
-//                   type="number"
-//                   value={quantity || ''}
-//                   onChange={(event) => setQuantity(event?.target?.value)}
-//                />
-//             </div>
-//          </div>
-//          <table className="table table-striped text-center mt-2">
-//             <thead>
-//                <tr>
-//                   <th scope="col">#</th>
-//                   <th scope="col">Item</th>
-//                   <th scope="col">Name</th>
-//                   <th scope="col">Qnt</th>
-//                   <th scope="col">Price</th>
-//                   <th scope="col">Total</th>
-//                </tr>
-//             </thead>
-//             <tbody>
-//                {purchasedItems && (
-//                   <>
-//                      {purchasedItems?.map((item, index) => (
-//                         <tr key={index}>
-//                            <th scope="row">{index + 1}</th>
-//                            <td className="px-0">
-//                               <img
-//                                  style={{ width: "50px", height: "50px" }}
-//                                  src={item.image}
-//                                  alt={item.name}
-//                               />
-//                            </td>
-//                            <td className="px-0">{item.name}</td>
-//                            <td className="px-0">
-//                               <input
-//                                  className="text-center border-0 bg-transparent w-100"
-//                                  value={item.quantity}
-//                                  onChange={(e) =>
-//                                     handleQuantityChange(
-//                                        index,
-//                                        e.target.value
-//                                     )
-//                                  }
-//                                  type="number"
-//                               />
-//                            </td>
-//                            <td className="px-0">
-//                               <input
-//                                  className="text-center border-0 bg-transparent w-100"
-//                                  value={formatRupees(item.price)}
-//                                  onChange={(e) =>
-//                                     handlePriceChange(
-//                                        index,
-//                                        e.target.value
-//                                     )
-//                                  }
-//                                  type="number"
-//                               />
-//                            </td>
-//                            <td className="px-0">{formatRupees(item?.total)}</td>
-//                            <td className="px-0 py-1">
-//                               <Button className="p-0 m-1">
-//                                  <DeleteIcon
-//                                     onClick={() =>
-//                                        handleDeleteItem(index)
-//                                     }
-//                                     color="red"
-//                                  />{" "}
-//                               </Button>
-//                            </td>
-//                         </tr>
-//                      ))}
-//                   </>
-//                )}
-//             </tbody>
-//          </table>
-//          <div className="row me-1">
-//             <p className="fw-bold text-end">Total :
-//                <FaIndianRupeeSign />
-//                {totalPrice}</p>
-//          </div>
-//          <div className="mx-2">
-//             {purchasedItems?.length > 0 &&
-//                <div className="mb-5 pb-3">
-//                   <ColorButton className="w-100" onClick={() => navigate("/confirm-bill")}>Print</ColorButton>
-//                </div>
-//             }
-//          </div>
-//       </Container >
-//    );
-// }
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, TextField, MenuItem } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import AddIcon from "@mui/icons-material/Add";
 import { styled } from "@mui/material/styles";
 import { orange, purple } from "@mui/material/colors";
 import { Autocomplete, Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { combinedArray } from "../../lib/product-list/productList";
 import { formatRupees } from "../../lib/convertRuppee";
-
+import lottieRecorder from "../../images/record.json";
+import Lottie from "lottie-react";
+import { CgPlayStopO } from "react-icons/cg";
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import { toast } from "react-toastify";
+import { MdRecordVoiceOver } from "react-icons/md";
 
 export default function CreateBill() {
    const [priceList, setPriceList] = useState([]);
@@ -253,7 +28,6 @@ export default function CreateBill() {
    const [productId, setProductId] = useState('');
    const [quantity, setQuantity] = useState('');
    const navigate = useNavigate();
-
 
    const [open, setOpen] = useState(false);
 
@@ -305,13 +79,22 @@ export default function CreateBill() {
       }
    }, [purchasedItems]);
 
-   const handleAddItem = () => {
+   const handleAddItem = (productId, quantity) => {
+
       if (!isNaN(productId) && !isNaN(quantity)) {
+
          const selectedItem = priceList.find((item) => item.id === productId);
+
          const newItem = { ...selectedItem, quantity: parseFloat(quantity), total: quantity * selectedItem?.price };
          setPurchasedItems((prevItems) => [...(prevItems || []), newItem]);
          setProductId('');
          setQuantity('');
+         stopListening();
+         setIsListening(false);
+         // Defer scroll to allow render to complete
+         setTimeout(() => {
+            bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+         }, 100);
       }
    };
 
@@ -373,6 +156,101 @@ export default function CreateBill() {
 
    const finalTotal = totalPrice + pendingAmounts.reduce((acc, amount) => acc + amount.value, 0);
 
+   const [isListening, setIsListening] = useState(false);
+   const [mediaStream, setMediaStream] = useState(null);
+   const bottomRef = useRef(null);
+
+   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+   const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+   useEffect(() => {
+      if (!recognition) {
+         alert("Speech recognition not supported");
+         return;
+      }
+
+      const handleStreamStart = async () => {
+         try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            setMediaStream(stream);
+         } catch (err) {
+            console.error("Microphone error:", err);
+         }
+      };
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = "en-US";
+
+      recognition.onstart = () => {
+         setIsListening(true);
+         handleStreamStart(); // Start visualizer stream
+      };
+
+      recognition.onresult = (event) => {
+         const speechToText = event.results[0][0].transcript;
+         const lowerText = speechToText.toLowerCase();
+
+         const matchedProduct = combinedArray
+            .map((product) => ({
+               ...product,
+               matchIndex: lowerText.indexOf(product.name.toLowerCase()),
+            }))
+            .filter((p) => p.matchIndex !== -1)
+            .sort((a, b) => b.name.length - a.name.length)[0];
+
+         if (matchedProduct) {
+            const qtyMatch = lowerText.match(/(\d+)\s*(kg|kilograms)?/);
+            const quantity = qtyMatch ? parseInt(qtyMatch[1], 10) : 1;
+
+            setProductId(matchedProduct?.id);
+            setQuantity(quantity);
+            handleAddItem(matchedProduct?.id, quantity);
+         } else {
+            toast.error("Doesn't match");
+            stopListening();
+            setIsListening(false);
+         }
+
+         stopListening(); // Ensure everything resets
+      };
+
+      recognition.onerror = (event) => {
+         console.error("Recognition error:", event.error);
+         stopListening();
+      };
+
+      recognition.onend = () => {
+         stopListening();
+      };
+   }, [recognition]);
+
+   const startListening = async () => {
+      if (recognition && !isListening) {
+         try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            setMediaStream(stream);
+            setIsListening(true);
+            recognition.start();
+         } catch (err) {
+            console.error("Microphone access denied", err);
+            toast.error("Microphone access denied.");
+            setIsListening(false);
+         }
+      }
+   };
+
+   const stopListening = () => {
+      if (recognition && isListening) {
+         recognition.stop();
+         setIsListening(false);
+
+         if (mediaStream) {
+            mediaStream.getTracks().forEach((track) => track.stop());
+            setMediaStream(null);
+         }
+      }
+   };
+
    return (
       <Container sx={{ padding: 1 }}>
          <React.Fragment>
@@ -423,63 +301,73 @@ export default function CreateBill() {
                </DialogActions>
             </Dialog>
          </React.Fragment>
-         <div>
-            <div className="d-flex mb-3 gap-2">
-               {/* <CustomizedButtons name='Set Price' path={"/all-prices"} /> */}
-               <ResetButton className="text-light w-100" onClick={() => {
-                  localStorage.removeItem("currentBill");
-                  setPurchasedItems([]);
-                  setTotalPrice(0);
-                  setExtraAmount(0);
-                  setPendingAmounts([]);
-               }}>
-                  Reset
-               </ResetButton>
-               <Button
-                  style={{ fontSize: "13px !important" }}
-                  disabled={productId === '' || quantity === ''}
-                  className="w-100"
-                  variant="contained"
-                  onClick={handleAddItem}
-               >
-                  Add Item
-               </Button>
-               <Button
-                  style={{ fontSize: "13px !important" }}
-                  variant="contained" className="w-100" onClick={handleClickOpen}>
-                  Amount
-               </Button>
+         <div className="sticky-top bg-light mb-2">
+            <div>
+               <div className="d-flex mb-3 gap-2">
+                  <ResetButton className="text-light w-100" onClick={() => {
+                     localStorage.removeItem("currentBill");
+                     setPurchasedItems([]);
+                     setTotalPrice(0);
+                     setExtraAmount(0);
+                     setPendingAmounts([]);
+                  }}>
+                     Reset
+                  </ResetButton>
+                  <Button
+                     style={{ fontSize: "13px !important" }}
+                     disabled={productId === '' || quantity === ''}
+                     className="w-100"
+                     variant="contained"
+                     onClick={() => handleAddItem(productId, quantity)}
+                  >
+                     Add Item
+                  </Button>
+                  <Button
+                     style={{ fontSize: "13px !important" }}
+                     variant="contained" className="w-100" onClick={handleClickOpen}>
+                     Amount
+                  </Button>
+               </div>
+               <div className="d-flex gap-2">
+                  <Autocomplete
+                     size="small"
+                     fullWidth
+                     options={combinedArray}
+                     getOptionLabel={(option) => option?.name || ''}
+                     value={combinedArray.find((option) => option?.id === productId) || null}
+                     onChange={(event, newValue) => setProductId(newValue?.id)}
+                     renderInput={(params) => (
+                        <TextField {...params} label="Product" variant="outlined" />
+                     )}
+                     renderOption={(props, option) => (
+                        <ListItem {...props} key={option.id}>
+                           <ListItemAvatar>
+                              <Avatar src={option?.image} />
+                           </ListItemAvatar>
+                           <ListItemText primary={option?.name} />
+                        </ListItem>
+                     )}
+                  />
+                  <TextField
+                     size="small"
+                     className="w-50"
+                     label="Quantity"
+                     variant="outlined"
+                     type="number"
+                     value={quantity || ''}
+                     onChange={(event) => setQuantity(event.target.value)}
+                  />
+               </div>
             </div>
-            <div className="d-flex gap-2">
-               <Autocomplete
-                  size="small"
-                  fullWidth
-                  options={combinedArray}
-                  getOptionLabel={(option) => option?.name || ''}
-                  value={combinedArray.find((option) => option?.id === productId) || null}
-                  onChange={(event, newValue) => setProductId(newValue?.id)}
-                  renderInput={(params) => (
-                     <TextField {...params} label="Product" variant="outlined" />
-                  )}
-                  renderOption={(props, option) => (
-                     <ListItem {...props} key={option.id}>
-                        <ListItemAvatar>
-                           <Avatar src={option?.image} />
-                        </ListItemAvatar>
-                        <ListItemText primary={option?.name} />
-                     </ListItem>
-                  )}
-               />
-               <TextField
-                  size="small"
-                  className="w-50"
-                  label="Quantity"
-                  variant="outlined"
-                  type="number"
-                  value={quantity || ''}
-                  onChange={(event) => setQuantity(event.target.value)}
-               />
-            </div>
+            {!isListening &&
+               <Button size="small" endIcon={<MdRecordVoiceOver />} className="w-100 mt-2" variant="contained" disabled={isListening} onClick={startListening} color="secondary">Start record</Button>
+            }
+            {isListening && (
+               <div className="d-flex align-items-center justify-content-center">
+                  <Lottie style={{ height: "50px" }} animationData={lottieRecorder} loop={true} />
+                  <CgPlayStopO onClick={stopListening} disabled={!isListening} size={33} color="red" />
+               </div>
+            )}
          </div>
          <table className="table table-striped text-center mt-2">
             <thead>
@@ -524,6 +412,7 @@ export default function CreateBill() {
                ))}
             </tbody>
          </table>
+         <div ref={bottomRef} />
          <h6 className="fw-bold float-end me-2 fs-14">Total of the Bill: ₹{totalPrice}</h6>
          <div className="mt-5">
             {pendingAmounts.length > 0 && (
