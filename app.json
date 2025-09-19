@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Trundle",
+    "slug": "trudleai",
+    "version": "1.0.0",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#5212C5"
+    },
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.parthi.trudleai",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to select and crop profile pictures.",
+        "NSCameraUsageDescription": "This app needs access to your camera to take profile pictures.",
+        "NSPhotoLibraryAddUsageDescription": "This app needs access to save cropped profile pictures to your photo library.",
+        "NSMicrophoneUsageDescription": "This app needs access to your microphone for video recording features."
+      },
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "com.parthi_1612.trudleai",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES"
+      ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dc3eae64-a028-4cc0-a952-a83049d9fb33"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "625287918130",
+    "project_id": "trundle-59e63",
+    "storage_bucket": "trundle-59e63.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625287918130:android:9c9953e166bd4186d6022b",
+        "android_client_info": {
+          "package_name": "com.parthi_1612.trudleai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625287918130-4v55rk69qte2up9jl2afvrqqfskisenm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.parthi_1612.trudleai",
+            "certificate_hash": "e397770144a85dcd4e319ff855e99c4304a41c47"
+          }
+        },
+        {
+          "client_id": "625287918130-n3c1pr21r8ql88i1jo0o95iltvp5ks64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPQEOBhHDBUSYQvP9-igj0NzXh9ln8feM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625287918130-i46tgngbt2m87vrcce9od1ifr7a3jnji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
