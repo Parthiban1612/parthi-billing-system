@@ -19,7 +19,6 @@ import {
   RefundAndCancellation,
   SelectCountryForTrip,
   UpdateProfile,
-  Activities,
   PersonalisedSettings,
   LocationDetails,
   BottomTabNavigator,
@@ -84,7 +83,6 @@ const AppNavigator = () => {
               <Stack.Screen name="TermsOfServices" component={TermsOfServices} />
               <Stack.Screen name="RefundAndCancellation" component={RefundAndCancellation} />
               <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
-              <Stack.Screen name="Activities" component={Activities} />
               <Stack.Screen name="PersonalisedSettings" component={PersonalisedSettings} />
               <Stack.Screen name="PaymentSuccess" component={PaymentSuccess} />
               <Stack.Screen name="LocationDetails" component={LocationDetails} />

@@ -7,7 +7,6 @@ export { default as OtpVerification } from './auth/otp-verification';
 export { default as CreateProfile } from './auth/create-profile';
 export { default as SelectCountryForTrip } from './home/SelectCountryForTrip';
 export { default as Account } from './account';
-export { default as Activities } from './account/activities';
 export { default as PersonalisedSettings } from './personolised-settings';
 export { default as BottomTabNavigator } from '../navigation/BottomTabNavigator';
 export { default as UpdateProfile } from './account/update-profile';
