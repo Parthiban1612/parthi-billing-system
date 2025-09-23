@@ -1,23 +1,18 @@
-// Base API configuration
-export const API_BASE_URL = 'https://mapi.trundle.me';
+import AppConfig from '../../config';
 
-export const RZP_TEST_KEY = 'rzp_test_rwwI0xDFigS3Fz';
+// Base API configuration from config
+export const API_BASE_URL = AppConfig.api.baseUrl;
+
+export const RZP_TEST_KEY = AppConfig.payment.razorpayTestKey;
 
 // Common axios configuration
 export const axiosConfig = {
   baseURL: API_BASE_URL,
-  timeout: 10000,
+  timeout: AppConfig.api.timeout,
   headers: {
     'Content-Type': 'application/json',
-    'x-api-key': 'S0HU1TJi.YN1ikR4PcO9bLM5BcaZh8qRuhHTXBZZc',
+    'x-api-key': AppConfig.api.apiKey,
   },
-};
-
-export const FIREBASE_CONFIG = {
-  PROJECT_ID: 'trundle-59e63',
-  STORAGE_BUCKET: 'trundle-59e63.firebasestorage.app',
-  API_KEY: 'AIzaSyBPQEOBhHDBUSYQvP9-igj0NzXh9ln8feM',
-  APP_ID: '1:625287918130:android:9c9953e166bd4186d6022b',
 };
 
 // API endpoints with full URLs
@@ -74,6 +69,7 @@ export const ENDPOINTS = {
 
   DOWNLOAD_INVOICE: `${API_BASE_URL}/payment/invoice-download`,
 
-  ZOHO_SALES_APP_KEY: `ocrGIIxqgug8FF0dQm7f2f%2FusB50z0o%2BWxgZVVM343lA8Y2Lq4ARzJwRFZvKZPXB_in`,
-  ZOHO_SALES_IQ_ACCESS_KEY: `kZb1TZ%2BPa80lPz7je7NdJsjhwzzB5R5PM2V4l7R4sB1J39m2ToTfN1NVTeiJTOo8Pp7GHlCcuyzfjLoygJeY3FtJsYqGJHLrXc6eqNkUY6RctNbvSOUicc32muET%2BMtd`,
-}; 
+  // Zoho Sales Configuration
+  ZOHO_SALES_APP_KEY: AppConfig.services.zoho.salesAppKey,
+  ZOHO_SALES_IQ_ACCESS_KEY: AppConfig.services.zoho.salesIqAccessKey,
+};

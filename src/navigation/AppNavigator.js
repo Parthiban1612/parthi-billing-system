@@ -26,35 +26,55 @@ import {
   CompletedTrips,
 } from '../screens';
 import { initializeApp, getApp } from 'firebase/app';
-import { FIREBASE_CONFIG } from '../redux/endpoints';
+import { setCurrentRouteName } from '../redux/authSlice';
+import { useDispatch } from 'react-redux';
+import AppConfig from '../../config';
 
 const Stack = createStackNavigator();
 
 const firebaseConfig = {
-  projectId: FIREBASE_CONFIG.PROJECT_ID,
-  storageBucket: FIREBASE_CONFIG.STORAGE_BUCKET,
-  apiKey: FIREBASE_CONFIG.API_KEY,
-  appId: FIREBASE_CONFIG.APP_ID,
+  projectId: AppConfig.services.firebase.projectId,
+  storageBucket: AppConfig.services.firebase.storageBucket,
+  apiKey: AppConfig.services.firebase.apiKey,
+  appId: AppConfig.services.firebase.appId,
 };
 
 initializeApp(firebaseConfig);
 getApp();
 
 const AppNavigator = () => {
-  // Use AuthContext instead of Redux selectors
-
-  // Keep travelCountries from Redux as it's not part of auth
-  // const { submittedCountry } = useSelector((state) => state.travelCountries);
 
   const navigationRef = useRef();
 
+  const dispatch = useDispatch();
+
   const { isAuthenticated, introSeen } = useSelector((state) => state.auth);
+
+  const handleStateChange = (currentRouteName) => {
+    dispatch(setCurrentRouteName(currentRouteName));
+  };
 
   return (
     <NavigationContainer
       ref={navigationRef}
       onStateChange={async (state) => {
-        const currentRouteName = state.routes[state.index].name;
+        const getCurrentRouteName = (navigationState) => {
+          if (!navigationState) {
+            return null;
+          }
+
+          const route = navigationState.routes[navigationState.index];
+
+          // If the route has nested state (like tab navigator), get the nested route name
+          if (route.state) {
+            return getCurrentRouteName(route.state);
+          }
+
+          return route.name;
+        };
+
+        const currentRouteName = getCurrentRouteName(state);
+        handleStateChange(currentRouteName);
         await analytics().logScreenView({
           screen_name: currentRouteName,
         });

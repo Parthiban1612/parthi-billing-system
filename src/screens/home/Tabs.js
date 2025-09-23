@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { TouchableRipple } from 'react-native-paper';
 import { useSelector } from 'react-redux';
-import Tips from '../../../assets/tips.svg';
+import { TipsIcon, UpdatesIcon, FavouritesIcon, FavouritesActiveIcon, TipsActiveIcon, UpdatesActiveIcon } from '../../../assets';
 import { trackFirebaseEvent } from '../../lib/analyics';
 
 const FilterTabs = ({ activeTab, setActiveTab }) => {
@@ -73,9 +73,9 @@ const FilterTabs = ({ activeTab, setActiveTab }) => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.tabsContainer}
         >
-            {renderTab('Favourites', 'star')}
-            {renderTab('Tips', Tips)}
-            {renderTab('Updates', 'bell', true)}
+            {renderTab('Favourites', activeTab === 'Favourites' ? FavouritesActiveIcon : FavouritesIcon)}
+            {renderTab('Tips', activeTab === 'Tips' ? TipsActiveIcon : TipsIcon)}
+            {renderTab('Updates', activeTab === 'Updates' ? UpdatesActiveIcon : UpdatesIcon)}
         </ScrollView>
     );
 };

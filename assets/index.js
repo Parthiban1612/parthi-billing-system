@@ -67,3 +67,11 @@ export { default as PricarCardIcon } from './price-card.svg';
 export { default as RightArrowIcon } from './right_arrow.svg';
 
 
+export { default as TipsIcon } from './tips.svg';
+export { default as UpdatesIcon } from './updates.svg';
+export { default as FavouritesIcon } from './favourites.svg';
+export { default as FavouritesActiveIcon } from './favourites_active.svg';
+export { default as TipsActiveIcon } from './tips_active.svg';
+export { default as UpdatesActiveIcon } from './updates_active.svg';
+
+

@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, Animated } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { View, TouchableOpacity, StyleSheet, Animated, BackHandler, AppState } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import Feather from 'react-native-vector-icons/Feather';
 import TestSheet from './TestSheet';
-import TalkToExpert from '../screens/home/TalkToExpert';
+import ConfirmSheet from '../screens/account/ConfirmSheet';
 import SvgComponent from '../common/CustomMegaphoneIcon';
 import { useBuySheet } from '../context/BuySheetContext';
 
@@ -28,11 +28,11 @@ const TAB_WIDTH = TAB_CONTAINER_WIDTH / TABS.length;
 const ACTIVE_PILL_DIAMETER = 48;
 const PILL_HORIZONTAL_MARGIN = (TAB_WIDTH - ACTIVE_PILL_DIAMETER) / 2;
 
-const CustomTabBar = ({ state, descriptors, navigation }) => {
+const CustomTabBar = ({ state, navigation }) => {
 
   const slideAnim = useRef(new Animated.Value(0)).current;
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const exitConfirmRef = useRef(null);
 
   const { isPaidUser } = useSelector((state) => state.auth);
 
@@ -46,10 +46,44 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
     dispatch(getPlans());
   }, [dispatch]);
 
+  // Reset confirm sheet state on component mount
+  useEffect(() => {
+    // Ensure the sheet is closed when component mounts
+    exitConfirmRef.current?.close();
+  }, []);
+
+  const { currentRouteName } = useSelector((state) => state.auth);
+
+  const handleExitConfirm = () => {
+    exitConfirmRef.current?.close();
+    BackHandler.exitApp();
+  };
+
+  const handleExitConfirmClose = () => {
+    exitConfirmRef.current?.close();
+  };
+
+
+  useEffect(() => {
+    const backAction = () => {
+      if (currentRouteName === 'HomeTab') {
+        exitConfirmRef.current?.snapToIndex(0);
+        return true;
+      }
+      return false; // Allow default back behavior for other routes
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  }, [currentRouteName]);
+
   useEffect(() => {
     const activeIndex = state.index;
     const toValue = activeIndex * TAB_WIDTH + PILL_HORIZONTAL_MARGIN;
-
     Animated.spring(slideAnim, {
       toValue,
       useNativeDriver: true,
@@ -57,6 +91,19 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
       speed: 14,
     }).start();
   }, [state.index, slideAnim]);
+
+  // Reset confirm sheet state when app becomes active
+  useEffect(() => {
+    const handleAppStateChange = (nextAppState) => {
+      if (nextAppState === 'active') {
+        exitConfirmRef.current?.close();
+      }
+    };
+
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+
+    return () => subscription?.remove();
+  }, []);
 
   const renderIcon = (tab, isFocused) => {
     const color = isFocused ? '#FFFFFF' : '#6E6E73';
@@ -73,12 +120,6 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
   return (
     <>
       <View style={[styles.wrapper, { bottom: insets.bottom }]}>
-
-        {/* Show modal */}
-        <TalkToExpert
-          visible={isModalVisible}
-          onClose={() => setIsModalVisible(false)}
-        />
 
         <View style={styles.tabContainer}>
           <Animated.View
@@ -154,6 +195,19 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
         </View>
       </View>
       <TestSheet />
+      {/* Exit confirmation sheet */}
+      <ConfirmSheet
+        ref={exitConfirmRef}
+        title="Hold on!"
+        message="Are you sure you want to go exit the app?"
+        iconName="alert-triangle"
+        iconColor="#FF6B6B"
+        confirmText="Exit"
+        confirmColor="#FF6B6B"
+        onConfirm={handleExitConfirm}
+        onClose={handleExitConfirmClose}
+        showCloseButton={false}
+      />
     </>
   );
 };

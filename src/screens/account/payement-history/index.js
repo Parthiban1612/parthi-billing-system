@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import AnimatedHeaderPage from '../../../components/AnimatedHeaderPage';
-
 
 import { TestSheet, SkeletonLoader, Button } from '../../../components';
 
@@ -53,6 +52,26 @@ const PaymentHistoryCardSkeleton = ({ isPortrait }) => (
     <SkeletonLoader width="100%" height={44} borderRadius={22} style={{ marginTop: 24 }} />
   </View>
 );
+
+const DownloadInvoiceButton = ({ dispatch, item }) => {
+
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  return (
+
+    <Button
+      style={{ backgroundColor: '#FFFFFF' }}
+      loading={isDownloading}
+      text="Download invoice"
+      onPress={async () => {
+        setIsDownloading(true);
+        await dispatch(downloadInvoice(item.id));
+        setIsDownloading(false);
+      }}
+    />
+  )
+};
+
 
 // Activity Card
 const PaymentHistoryCard = ({ dispatch, item, isPortrait, loading }) => (
@@ -108,10 +127,7 @@ const PaymentHistoryCard = ({ dispatch, item, isPortrait, loading }) => (
       <Text style={styles.valueText}>{item.created_at}</Text>
     </View>
 
-    {/* use Button component from components */}
-    <Button style={{ backgroundColor: '#FFFFFF' }} loading={loading} text="Download invoice" onPress={() => {
-      dispatch(downloadInvoice(item.id));
-    }} />
+    <DownloadInvoiceButton dispatch={dispatch} item={item} isPortrait={isPortrait} loading={loading} />
   </View>
 );
 
@@ -155,7 +171,13 @@ const PaymentHistoryScreen = () => {
           ) : paymentHistoryData?.data?.length > 0 ? (
             // Show actual activity cards when data is loaded
             paymentHistoryData?.data?.map((item, index) => (
-              <PaymentHistoryCard dispatch={dispatch} key={index} item={item} isPortrait={isPortrait} loading={downloadInvoiceLoading} />
+              <PaymentHistoryCard
+                dispatch={dispatch}
+                key={index}
+                item={item}
+                isPortrait={isPortrait}
+                loading={downloadInvoiceLoading}
+              />
             ))
           ) : (
             // Show no data message when there are no activities

@@ -89,10 +89,8 @@ export const BuySheetProvider = ({ children }) => {
 
         paymentData = initiateResponse.data;
 
-      } catch (initiateError) {
-        console.log('====================================');
-        console.log(initiateError);
-        console.log('====================================');
+      }
+      catch (initiateError) {
         closeBuySheet();
         setIsPaymentLoading(false);
         return;
@@ -102,7 +100,7 @@ export const BuySheetProvider = ({ children }) => {
       const paymentOptions = {
         description: paymentData?.plan_description,
         currency: 'INR',
-        key: RZP_TEST_KEY,
+        key: paymentData?.key_id,
         order_id: paymentData.order_id,
         amount: planData?.price,
         name: 'Trundle',

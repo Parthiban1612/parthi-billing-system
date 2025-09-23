@@ -2,7 +2,7 @@
 globalThis.RNFB_SILENCE_MODULAR_DEPRECATION_WARNINGS = true;
 
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, ActivityIndicator, Platform } from 'react-native';
+import { StyleSheet, View, Text, ActivityIndicator, Platform, Appearance } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from 'react-redux';
 import { store, persistor } from './src/redux/store';
@@ -12,8 +12,8 @@ import * as Font from 'expo-font';
 import Toast from 'react-native-toast-message';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { GlobalBottomSheetProvider } from './src/context/GlobalBottomSheetContext';
-import { ZohoSalesIQ } from 'react-native-zohosalesiq-mobilisten';
-import { ENDPOINTS } from './src/redux/endpoints';
+import { SIQTheme, ZohoSalesIQ } from 'react-native-zohosalesiq-mobilisten';
+import AppConfig from './config';
 
 function AppFlow() {
   return <AppNavigator />;
@@ -53,6 +53,26 @@ export default function App() {
     loadFonts();
   }, []);
 
+  // Force light mode regardless of system setting
+  useEffect(() => {
+    Appearance.setColorScheme('light');
+  }, []);
+
+  // Create a new theme instance using SIQTheme
+  const customTheme = new SIQTheme();
+
+  // Customize properties in the customTheme instance as desired
+  customTheme.Navigation.backgroundColor = "#7F4DFF"
+  customTheme.Navigation.titleColor = "#FFFFFF"
+  customTheme.Navigation.tintColor = "#FFFFFF"
+  customTheme.themeColor = "#7F4DFF"
+
+  customTheme.Chat.backgroundColor = "#F5F6F9"
+  customTheme.Chat.Input.sendIconColor = "#7F4DFF"
+  customTheme.Chat.Input.textFieldPlaceholderColor = "#938EA2"
+  customTheme.Chat.Input.textFieldTextColor = "#000000"
+  customTheme.Chat.Input.textFieldBackgroundColor = "#FFFFFF"
+  customTheme.Chat.Input.textFieldBorderColor = "#938EA2"
 
   useEffect(() => {
     // Initialize Zoho SalesIQ
@@ -63,52 +83,20 @@ export default function App() {
 
         if (Platform.OS === 'ios') {
           // Replace with your actual iOS keys from Zoho SalesIQ console
-          appKey = "YOUR_IOS_APP_KEY";
-          accessKey = "YOUR_IOS_ACCESS_KEY";
+          appKey = AppConfig.services.zoho.salesAppKey;
+          accessKey = AppConfig.services.zoho.salesIqAccessKey;
         } else {
           // Your Android keys
-          appKey = ENDPOINTS.ZOHO_SALES_APP_KEY;
-          accessKey = ENDPOINTS.ZOHO_SALES_IQ_ACCESS_KEY;
+          appKey = AppConfig.services.zoho.salesAppKey;
+          accessKey = AppConfig.services.zoho.salesIqAccessKey;
         }
 
         // Initialize Zoho SalesIQ
         ZohoSalesIQ.initWithCallback(appKey, accessKey, (success) => {
           if (success) {
-            console.log("Zoho SalesIQ initialized successfully!");
-
-            // Try direct JS theming - simple approach
-            setTimeout(() => {
-              try {
-                // console.log("Attempting to apply Zoho SalesIQ theme...");
-
-                // Try different theming methods
-                if (ZohoSalesIQ.Theme && ZohoSalesIQ.Theme.setThemeColor) {
-                  ZohoSalesIQ.Theme.setThemeColor("#FF0000");
-                  console.log("✅ Theme color set to RED using Theme.setThemeColor");
-                } else if (ZohoSalesIQ.setThemeColor) {
-                  ZohoSalesIQ.setThemeColor("#FF0000");
-                  console.log("✅ Theme color set to RED using setThemeColor");
-                } else {
-                  console.log("❌ No theme color methods available");
-                }
-
-                // Try to hide launcher
-                if (ZohoSalesIQ.Launcher && ZohoSalesIQ.Launcher.setVisibility) {
-                  ZohoSalesIQ.Launcher.setVisibility(ZohoSalesIQ.Launcher.VisibilityMode.NEVER);
-                  console.log("✅ Launcher hidden successfully");
-                } else {
-                  console.log("❌ Launcher visibility methods not available");
-                }
-
-              } catch (error) {
-                console.log("❌ Theming error:", error.message);
-              }
-            }, 2000); // 2 second delay to ensure Zoho is fully initialized
-
-            // setZohoInitialized(true);
+            ZohoSalesIQ.setThemeForiOS(customTheme);
           } else {
             console.error("Zoho SalesIQ initialization failed!");
-            // setZohoInitialized(true); // Set to true anyway to not block the app
           }
         });
 

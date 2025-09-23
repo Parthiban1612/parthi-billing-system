@@ -155,6 +155,7 @@ const authSlice = createSlice({
     isProfileCompleted: false,
     profileImage: null,
     isPaidUser: false,
+    currentRouteName: "HomeTab",
   },
   reducers: {
     logout(state) {
@@ -196,6 +197,9 @@ const authSlice = createSlice({
     },
     clearError(state) {
       state.error = null;
+    },
+    setCurrentRouteName(state, action) {
+      state.currentRouteName = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -330,8 +334,9 @@ const authSlice = createSlice({
         state.error = action.payload || action.error.message;
         state.isAuthenticated = false;
       })
+
   },
 });
 
-export const { logout, setIntroSeen, resetIntroSeen, clearAuthState, clearError, clearProfileImage, updateUserPhoto, updateIsPaidUser, setIsAuthenticated } = authSlice.actions;
+export const { logout, setIntroSeen, resetIntroSeen, clearAuthState, clearError, clearProfileImage, updateUserPhoto, updateIsPaidUser, setIsAuthenticated, setCurrentRouteName } = authSlice.actions;
 export default authSlice.reducer;

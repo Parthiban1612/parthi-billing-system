@@ -3,4 +3,12 @@
   <color name="iconBackground">#ffffff</color>
   <color name="colorPrimary">#023c69</color>
   <color name="colorPrimaryDark">#5212C5</color>
+  <color name="siq_chat_input_outlineboxcolor">#FFFFFF</color>
+  <color name="siq_forms_outlineboxcolor">#FFFFFF</color>
+  <color name="siq_chat_infomessage_textcolor">#000000</color>
+  <color name="siq_chat_infomessage_backgroundcolor">#FFFFFF</color>
+  <color name="siq_chat_rating_skip_textcolor">#FFFFFF</color>
+  <color name="siq_chat_rating_skip_backgroundcolor">#7F4DFF</color>
+  <color name="siq_chat_feedback_inputfield_bordercolor">#FFFFFF</color>
+  <color name="siq_forms_toolbar_backgroundcolor">#7F4DFF</color>
 </resources>

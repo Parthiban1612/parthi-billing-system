@@ -1,0 +1,106 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="android:statusBarColor">#5212C5</item>
+  </style>
+  <style name="Theme.App.SplashScreen" parent="AppTheme">
+    <item name="android:windowBackground">@drawable/ic_launcher_background</item>
+  </style>
+
+<!-- Theme definitions using consistent colors -->
+<style name="Theme.SalesIQ.Base" parent="Theme.SalesIQ.Light.DarkActionBar">
+    <!-- Existing attributes -->
+    <item name="siq_chat_message_backgroundcolor_operator">#FFFFFF</item>
+    <item name="siq_chat_message_backgroundcolor_visitor">#7F4DFF</item>
+    <item name="siq_toolbar_backgroundcolor">#7F4DFF</item>
+    <item name="siq_statusbar_color">#7F4DFF</item>
+    <item name="colorAccent">#7F4DFF</item>
+    <item name="siq_backgroundcolor">#F5F6F9</item>
+    <item name="siq_forms_backgroundcolor">#FFFFFF</item>
+    <item name="siq_chat_message_textcolor_operator">#000000</item>
+    <item name="siq_chat_message_textcolor_visitor">#FFFFFF</item>
+    <item name="siq_chat_input_backgroundcolor">#FFFFFF</item>
+    <item name="siq_chat_input_textcolor">#000000</item>
+    <item name="siq_chat_input_hint_textcolor">#938EA2</item>
+    <item name="siq_forms_outlineboxcolor">#FFFFFF</item>
+    <item name="siq_chat_infomessage_textcolor">#000000</item>
+    
+    <!-- Skip button customization - Light theme colors -->
+    <item name="siq_chat_rating_skip_textcolor">#7F4DFF</item> <!-- Skip button text color (purple on light background) -->
+    <item name="siq_chat_rating_skip_backgroundcolor">#FFFFFF</item> <!-- Skip button background (white) -->
+    
+    <!-- Input field border customization -->
+    <item name="siq_chat_feedback_inputfield_bordercolor">#7F4DFF</item> <!-- Input field border color (purple) -->
+    
+    <!-- Forms toolbar (header) customization -->
+    <item name="siq_forms_toolbar_backgroundcolor">#7F4DFF</item> <!-- Forms header background -->
+    
+
+</style>
+
+<style name="Theme.SalesIQ.Base.DarkActionBar" parent="Theme.SalesIQ.Light.DarkActionBar">
+    <!-- Use the same colors as base theme -->
+    <item name="siq_chat_message_backgroundcolor_operator">#FFFFFF</item>
+    <item name="siq_chat_message_backgroundcolor_visitor">#7F4DFF</item>
+    <item name="siq_toolbar_backgroundcolor">#7F4DFF</item>
+    <item name="siq_statusbar_color">#7F4DFF</item>
+    <item name="colorAccent">#7F4DFF</item>
+    <item name="siq_backgroundcolor">#F5F6F9</item>
+    <item name="siq_forms_backgroundcolor">#FFFFFF</item>
+    <item name="siq_chat_message_textcolor_operator">#000000</item>
+    <item name="siq_chat_message_textcolor_visitor">#FFFFFF</item>
+    <item name="siq_chat_input_backgroundcolor">#FFFFFF</item>
+    <item name="siq_chat_input_textcolor">#000000</item>
+    <item name="siq_chat_input_hint_textcolor">#938EA2</item>
+    <item name="siq_forms_outlineboxcolor">#FFFFFF</item>
+    <item name="siq_chat_infomessage_textcolor">#000000</item>
+    
+    <!-- Skip button customization - Light theme colors -->
+    <item name="siq_chat_rating_skip_textcolor">#7F4DFF</item>
+    <item name="siq_chat_rating_skip_backgroundcolor">#FFFFFF</item>
+    
+    <!-- Input field border customization -->
+    <item name="siq_chat_feedback_inputfield_bordercolor">#7F4DFF</item>
+    
+    <!-- Forms toolbar customization -->
+    <item name="siq_forms_toolbar_backgroundcolor">#7F4DFF</item>
+    
+</style>
+
+<style name="Theme.SalesIQ.Base.Dark" parent="Theme.SalesIQ.Dark">
+    <!-- Use the same colors for dark mode -->
+    <item name="siq_chat_message_backgroundcolor_operator">#FFFFFF</item>
+    <item name="siq_chat_message_backgroundcolor_visitor">#7F4DFF</item>
+    <item name="siq_toolbar_backgroundcolor">#7F4DFF</item>
+    <item name="siq_statusbar_color">#7F4DFF</item>
+    <item name="colorAccent">#7F4DFF</item>
+    <item name="siq_backgroundcolor">#F5F6F9</item>
+    <item name="siq_forms_backgroundcolor">#FFFFFF</item>
+    <item name="siq_chat_message_textcolor_operator">#000000</item>
+    <item name="siq_chat_message_textcolor_visitor">#FFFFFF</item>
+    <item name="siq_chat_input_backgroundcolor">#FFFFFF</item>
+    <item name="siq_chat_input_textcolor">#000000</item>
+    <item name="siq_chat_input_hint_textcolor">#938EA2</item>
+    <item name="siq_forms_outlineboxcolor">#FFFFFF</item>
+    <item name="siq_chat_infomessage_textcolor">#000000</item>
+    
+    <!-- Skip button customization - Light theme colors -->
+    <item name="siq_chat_rating_skip_textcolor">#7F4DFF</item>
+    <item name="siq_chat_rating_skip_backgroundcolor">#FFFFFF</item>
+    
+    <!-- Input field border customization -->
+    <item name="siq_chat_feedback_inputfield_bordercolor">#7F4DFF</item>
+    
+    <!-- Forms toolbar customization -->
+    <item name="siq_forms_toolbar_backgroundcolor">#7F4DFF</item>
+    
+</style>
+
+<!-- Additional color definitions if needed -->
+<color name="skip_button_background">#7F4DFF</color>
+<color name="skip_button_text">#FFFFFF</color>
+<color name="input_border_white">#FFFFFF</color>
+<color name="toolbar_border_white">#FFFFFF</color>
+
+</resources>

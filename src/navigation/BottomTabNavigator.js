@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
@@ -7,10 +7,14 @@ import ExplorerScreen from '../screens/explorer';
 import CustomTabBar from '../components/CustomTabBar';
 import FullPageScroller from '../screens/home';
 import SvgComponent from '../common/CustomMegaphoneIcon';
+import { Alert, BackHandler } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+
+ 
 
   return (
     <Tab.Navigator
